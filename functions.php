@@ -1,29 +1,7 @@
 <?php
 
-function url_for($script_path){
-    //add the leading '/' if not present
-    if($script_path[0] != '/'){
-        $script_path = "/" . $script_path;
-    }
-    return WWW_ROOT . $script_path;
-}
 
-function redirect_to($location) {
-    header("Location: ". $location);
-    exit;
-}
-
-function is_post_request() {
-    return $_SERVER['REQUEST_METHOD'] == 'POST';
-}
-
-function is_get_request() {
-    return $_SERVER['REQUEST_METHOD'] == 'GET'; //This will return true or false
-}
-
-/////////////////////////////////////////////
-
-// DB operations
+// Connect to DB
 function connect_db(){
     $db_conn = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         if ($db_conn->connect_errno) {
