@@ -16,9 +16,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-    <script src="<?php echo url_for('/js/ajax.js'); ?>"></script>
-    <script src="<?php echo url_for('/js/orderAjax.js'); ?>"></script>
-    <link rel="stylesheet" media="all" href="<?php echo url_for('/css/style.css'); ?>" />
+    <script src="./js/ajax.js"></script>
+    <script src="./js/orderAjax.js"></script>
+    <link rel="stylesheet" media="all" href="./css/style.css" />
   </head>
 
   <body>
@@ -29,12 +29,12 @@
         <a class="navbar-brand" href="#">Pizza Parlor</a>
         </div>
         <ul class="nav navbar-nav">
-          <li><a href="<?php echo url_for('/index.php');?>">Home</a></li>
+          <li><a href="./index.php">Home</a></li>
           <li><a href="#">Menu</a></li>
           <li><a href="#">Deals</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li id="menuLogin"><a href="<?php echo url_for('/order.php');?>">
+          <li id="menuLogin"><a href="/order.php">
           <span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
         </ul>
       </div>

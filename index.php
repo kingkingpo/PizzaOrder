@@ -34,7 +34,7 @@ require_once('initialize.php'); ?>
         </div>
     </div>
     
-    <a href="<?php echo url_for('/order.php'); ?>">Start</a>
+    <a href="./order.php">Start</a>
 </div>
 
 <?php include('footer.php'); ?>
