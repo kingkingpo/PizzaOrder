@@ -58,7 +58,7 @@ $(document).ready( function(){
 			$("#menuLogin").text("Hello " + userEmail + "!");
 
 			if ( (response.status == "OK") && ($("#div1").html() == "Please log-in first") ){
-           		$("#div1").html("<table id=\"table1\" border=\"1\"></table>");
+           		$("#addressList").html("<table id=\"table1\" border=\"1\"></table>");
 			}
 			   
 			$("#table1").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
