@@ -12,13 +12,13 @@ var sendOrders = {
     Toppings: []
 };
 
+
 function chooseAddress(row) {
     sendOrders.DeliveryStreetAddress = document.getElementById('DeliveryStreetAddress_' + row).innerHTML;
     sendOrders.UnitNum = document.getElementById('UnitNum_' + row).innerHTML;
     sendOrders.DeliveryCity = document.getElementById('DeliveryCity_' + row).innerHTML;
     sendOrders.DeliveryProvince = document.getElementById('DeliveryProvince_' + row).innerHTML;
     sendOrders.DeliveryPostCode = document.getElementById('DeliveryPostCode_' + row).innerHTML;
-
 
 
     $("#addressList").hide();

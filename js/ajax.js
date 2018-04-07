@@ -30,6 +30,7 @@ $(document).ready( function(){
 	$("#step6Page").hide();
 	$("#step7Page").hide();
 	$("#saveUserInfo").hide();
+	$("#addAddress").hide();
 
 	$("#emailForm").submit( function(event){
 		
@@ -44,6 +45,7 @@ $(document).ready( function(){
 
 		$("#plzLogIn").hide();
 		$("#btnLogin").hide();
+		$("#addAddress").show();
 		console.log("response received");
 		console.log(response);
 
@@ -79,7 +81,7 @@ $(document).ready( function(){
 		}
 
 	} //end displayUserAddress()
-	
+
 
 	$("#saveUserInfo").submit( function(event){
 

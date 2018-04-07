@@ -56,6 +56,7 @@
 </div>
 
 <div id="addressList"></div>
+<button type='button' id="addAddress" onclick='addAddress()' >Add Address</button>
 <div id="choosePizza">
 <!-- Pizza Name -->
 <h4>Please choose the type of pizza</h4>
@@ -122,7 +123,6 @@
 
 <div id="step5Page">
 <table id="pizzaTable" border="1">
-
 </table>
 
   <button type='button' onclick='completeIncludeCurrent()' >Complete the order, including the current pizza and any other pizzas already added to the order</button>
