@@ -57,7 +57,8 @@
 
 <div id="addressList"></div>
 <div id="choosePizza">
-Pizza Name
+<!-- Pizza Name -->
+<h4>Please choose the type of pizza</h4>
 <select id="pizzaType">
   <option value="Classic">Classic</option>
   <option value="Hawaiian">Hawaiian</option>
@@ -67,28 +68,32 @@ Pizza Name
 </select></br>
 
 
-Size
+<!-- Size -->
+<h4>Please choose the size of pizza</h4>
 <select id="size">
   <option value="L">Large</option>
   <option value="M">Medium</option>
   <option value="S">Small</option>
 </select></br>
 
-Dough Type
+<!-- Dough Type -->
+<h4>Please choose the dough type of pizza</h4>
 <select id="doughType">
   <option value="stiffDough">Stiff Dough</option>
   <option value="softDough">Soft Dough</option>
   <option value="breadDough">Bread Dough</option>
 </select></br>
 
-Sauce Type
+<!-- Sauce Type -->
+<h4>Please choose the sauce to be added</h4>
 <select id="sauceType">
   <option value="exquisiteSauce">Exquisite Sauce</option>
   <option value="sicilianSauce">Sicilian Sauce</option>
   <option value="essanaye'sSauce">Essanaye's Sauce</option>
 </select></br>
 
-Cheese Type
+<!-- Cheese Type -->
+<h4>Please choose the cheese to be added</h4>
 <select id="cheeseType">
   <option value="mozzarella">Mozzarella</option>
   <option value="provolone">Provolone</option>
@@ -98,7 +103,9 @@ Cheese Type
 <button type='button' onclick='choosePizza()' >Next</button>
 </div>
 
+<!-- Toppings -->
 <div id="chooseTopping">
+<h4>Please choose the topping to be added</h4>
   <input type="checkbox" id="GreenOlives" value="GreenOlives">Green Olives<br>
   <input type="checkbox" id="Zucchini" value="Zucchini">Zucchini<br>
   <input type="checkbox" id="Onions" value="Onions">Onions<br>
@@ -119,10 +126,10 @@ Cheese Type
 </table>
 
   <button type='button' onclick='completeIncludeCurrent()' >Complete the order, including the current pizza and any other pizzas already added to the order</button>
-  </br><button type='button' onclick='completNotIncludeCurrent()' >Complete the order, but do not include the current pizza</button>
-  </br><button type='button' onclick='addPizza()' >Add another pizza to the order</button>
-  </br><button type='button' onclick='discardCurrentAndAddPizza()' >Discard the current pizza and add another pizza to the order </button>
-  </br><button type='button' onclick='()' >공사중 Cancel the order </button>
+  </br></br><button type='button' onclick='completNotIncludeCurrent()' >Complete the order, but do not include the current pizza</button>
+  </br></br><button type='button' onclick='addPizza()' >Add another pizza to the order</button>
+  </br></br><button type='button' onclick='discardCurrentAndAddPizza()' >Discard the current pizza and add another pizza to the order </button>
+  </br></br><button type='button' onclick='()' >공사중 Cancel the order </button>
 </div>
 
 <div id="step6Page">
