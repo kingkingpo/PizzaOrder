@@ -7,7 +7,6 @@ $(document).ready( function(){
 	$("#step6Page").hide();
 	$("#step7Page").hide();
 	$("#saveUserInfo").hide();
-	// $("#addAddress").hide();
 	$("#btnAddAddress").hide();
 	$("#newAddressForm").hide();
 
@@ -62,6 +61,7 @@ $(document).ready( function(){
 				  + "</td><td><button id='submitAddress' type='button' onclick='chooseAddress("+ r +")'>Next</button></td></tr>"
 			  );
 
+			$("#div1").hide();
 			$("#btnAddAddress").show();
 
 			}

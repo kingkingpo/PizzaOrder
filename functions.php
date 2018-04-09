@@ -27,7 +27,6 @@ function getUserInfo() {
         // sanitize user inputs
         $email = $db_conn->real_escape_string($_POST['email']);
 
-        // 사용자 아이디 가져와서 SESSION 값으로 넣어주기
         $userId = "SELECT CustId FROM customers WHERE Email ='".$email."'";
         $resultId = $db_conn->query($userId);
 
@@ -177,6 +176,7 @@ function addNewAddress(){
 
             while ($rowId = $resultID->fetch_assoc()){
                 $CustIdRetrieved = $rowId['CustId'];
+                $_SESSION["CustId"] = $CustIdRetrieved;
             }
         }
 
@@ -202,7 +202,14 @@ function addNewAddress(){
             } else if ($affectedRows == 1) {
 
                 //get updated CustId
-                $sql2 = "SELECT * FROM Orders WHERE CustId = ".$CustIdRetrieved;
+                // $sql2 = "SELECT DISTINCT * FROM Orders WHERE CustId = ".$CustIdRetrieved;
+
+                $sql2 = "SELECT DISTINCT c.Email, o.DeliveryStreetAddress, o.DeliveryUnitNum, o.DeliveryCity, o.DeliveryProvince, o.DeliveryPostCode
+                        FROM customers c
+                        INNER JOIN orders o
+                        ON c.CustId = o.CustId
+                        WHERE email='" .$emailNew."'";
+
                 $getNewAdd = $db_conn->query($sql2);
 
                 if ($db_conn->error) {
