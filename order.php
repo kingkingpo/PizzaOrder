@@ -3,7 +3,8 @@
 <?php include('header.php'); ?>
 
 <div id="wrap-login">
-<!-- log-in form -->
+
+<!-- FORM_#1: LOG IN -->
 <div class="container-fluid">
 	<h1 id="plzLogIn">Please login</h1>
 
@@ -21,6 +22,7 @@
 
 <div id="div1">Please log-in first</div>
 
+<!-- FORM_#2: SAVE NEW USER DATA -->
 <!-- if there is no existing user information, show a form to save user-information -->
 <div class="container-fluid" >
 	<form method="POST" id="saveUserInfo" style="width:500px; margin-top: 30px;">
@@ -71,11 +73,15 @@
 </div>
 
 
+<!--Display the user's delivery address(es) -->
 <div id="addressList"></div>
 <div id="addressListNew"></div>
 
+
+<!-- Button to add a new delivery address-->
 <button type='button' class="btn btn-primary" id="btnAddAddress">Add a new address</button>
 
+<!-- FORM_#3: NEW ADDRESS FORM -->
 <!-- display a form to save a new address -->
 <div class="container-fluid" >
 	<form method="POST" id="newAddressForm" style="width:500px; margin-top: 30px; border:1px solid #bdc3c7; radius: 1px;">
@@ -115,6 +121,7 @@
 
 
 <div id="choosePizza">
+
 <!-- Pizza Name -->
 <h4>Please choose the type of pizza</h4>
 <select id="pizzaType">

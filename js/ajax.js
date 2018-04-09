@@ -10,7 +10,7 @@ $(document).ready( function(){
 	$("#btnAddAddress").hide();
 	$("#newAddressForm").hide();
 
-
+	//**********************************************
 	// LOG IN **************************************
 	//**********************************************
 	// When the user clicks Login button,
@@ -69,7 +69,8 @@ $(document).ready( function(){
 
 	} //end displayUserAddress()
 
-
+	
+	//**********************************************
 	// SAVE NEW USER INFORMATION********************
 	//**********************************************
 	// When the user clicks Save button,
@@ -109,17 +110,18 @@ $(document).ready( function(){
 			$("#plzLogIn").hide();
 			$("#btnLogin").hide();
 			$("#saveUserInfo").hide();
+			$("#div1").hide();
 
 			var userEmail = response.customers[0].Email;
 			$("#menuLogin").text("Hello " + userEmail + "!");
 
-			$("#div1").html("<table id=\"table1\" border=\"1\"></table>");
+			$("#addressList").html("<table id=\"table2\" border=\"1\"></table>");
 				
-			$("#table1").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
+			$("#table2").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
 
 				for (r in response.customers){
 				
-					$("#table1").append(
+					$("#table2").append(
 
 						"<tr><td id='DeliveryStreetAddress_"+r+"'>" + response.customers[r].StreetAddress
 						+ "</td><td id='UnitNum_"+r+"'>" + response.customers[r].UnitNum
@@ -136,7 +138,8 @@ $(document).ready( function(){
 	}
 
 
-	// ADD NEW ADDRESS *****************************
+	//**********************************************
+	// ADD NEW, ADDITIONAL DELIVERY ADDRESS ********
 	//**********************************************
 	$("#btnAddAddress").click(function() {
 		$("#newAddressForm").show();
@@ -201,9 +204,6 @@ $(document).ready( function(){
 	
 		}
 	}
-
-
-
 
 	$.get("getUserInfo.php", displayUserAddress);
 

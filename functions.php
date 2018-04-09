@@ -17,14 +17,19 @@ function disconnect_db($db_conn){
 }
 
 
+// Check user email, and get user information stored in the DB
 function getUserInfo() {
 
     if ( isset($_POST['email']) ) {
 
-        // connect to the DB
+        // Connect to the DB
         $db_conn = connect_db();
 
-        // sanitize user inputs
+        if ($db_conn->error) {
+            $error = $db_conn->error;
+        }
+
+        // Sanitize user inputs
         $email = $db_conn->real_escape_string($_POST['email']);
 
         $userId = "SELECT CustId FROM customers WHERE Email ='".$email."'";
@@ -38,19 +43,14 @@ function getUserInfo() {
             }
         }
 
-        // 사용자 이메일을 기준으로 오더 테이블에 있는 주소 가져오기
+        // Get exising delivery addresses
         $sql = "SELECT DISTINCT c.Email, o.DeliveryStreetAddress, o.DeliveryUnitNum, o.DeliveryCity, o.DeliveryProvince, o.DeliveryPostCode
                 FROM customers c
                 INNER JOIN orders o
                 ON c.CustId = o.CustId
                 WHERE email='" .$email."'";
         
-        // echo "<p>$sql</p>";
         $result = $db_conn->query($sql);
-        
-        if ($db_conn->error) {
-            $error = $db_conn->error;
-        }
 
         if ($result->num_rows > 0){
 
@@ -61,12 +61,12 @@ function getUserInfo() {
 
                 array_push($customers['customers'], $row);
 
-            } //End While()
+            } //End While-loop
 
             echo json_encode($customers);
         
         } else {
-            // 만약 결과가 없으면 이메일 없음
+            // if no result, send out an error message
             echo '{ "status": "No email found" }';
         }
 
@@ -77,6 +77,7 @@ function getUserInfo() {
 } //end getUserInfo()
 
 
+// Save NEW USER data in DB
 function saveUserInfo() {
 
     if ( isset($_POST['fullName']) && isset($_POST['street']) && isset($_POST['unitNum']) 
@@ -84,6 +85,11 @@ function saveUserInfo() {
 
         // connect to the DB
         $db_conn = connect_db();
+
+        if ($db_conn->error) {
+            $error = $db_conn->error;
+            echo $error;
+        }
 
         // sanitize user inputs
         $email = $db_conn->real_escape_string($_POST['email']);
@@ -107,26 +113,18 @@ function saveUserInfo() {
             $stmt->bind_param('ssssssss', $fullName, $unitNum, $street, $city, $province, $postalCode, $email, $phoneNum);
             $stmt->execute();
             $affectedRows = $stmt->affected_rows;
-            // $lastId = $db_conn->lastInsertId();
             
             if (!$affectedRows){
                 echo '{ "status": "Oops. Something is missing. Please fill out all the fields" }';
-        
             } else if ($affectedRows == 1) {
-                // customer 테이블에 사용자 정보 업데이트 성공하면
-                //echo '{ "status": "OK" }';
-
-                //get updated CustId
+                // if INSERT is done successfully,
+                //get the CustId
                 $sql2 = "SELECT * FROM customers WHERE Email = '".$email. "'";
                 $getCustAdd = $db_conn->query($sql2);
-
-                if ($db_conn->error) {
-                    $error = $db_conn->error;
-                    echo $error;
-                }
                 
                 if ($getCustAdd->num_rows > 0){
-
+                    // if there is any results returned from SQL query,
+                    // create & populate customers array    
                     $customers = array("status" => "NewOK");
                     $customers['customers'] = array();
         
@@ -138,7 +136,7 @@ function saveUserInfo() {
         
                     echo json_encode($customers);
                 } else {
-                    // 만약 결과가 없으면 이메일 없음
+                    // if no result, send out an error message
                     echo '{ "status": "Something went wrong." }';
                 }
 
@@ -157,10 +155,15 @@ function addNewAddress(){
     if ( isset($_POST['emailNew']) && isset($_POST['streetNew']) && isset($_POST['unitNumNew']) 
         && isset($_POST['cityNew']) && isset($_POST['provinceNew']) && isset($_POST['postalCodeNew'])) {
 
-        // connect to the DB
+        // Connect to the DB
         $db_conn = connect_db();
 
-        // sanitize user inputs
+        if ($db_conn->error) {
+            $error = $db_conn->error;
+            echo $error;
+        }
+
+        // Sanitize user inputs
         $emailNew = $db_conn->real_escape_string($_POST['emailNew']);
         $unitNumNew = $db_conn->real_escape_string($_POST['unitNumNew']);
         $streetNew = $db_conn->real_escape_string($_POST['streetNew']);
@@ -168,7 +171,7 @@ function addNewAddress(){
         $provinceNew = $db_conn->real_escape_string($_POST['provinceNew']);
         $postalCodeNew = $db_conn->real_escape_string($_POST['postalCodeNew']);
 
-        // Get user id from the email address
+        // Get user id from the email address provided
         $sqlId = "SELECT CustId FROM Customers WHERE Email = '".$emailNew. "'";
         $resultID = $db_conn->query($sqlId);
         
@@ -180,7 +183,7 @@ function addNewAddress(){
             }
         }
 
-        // Update orders table
+        // Insert the new delivery address to DB (Orders table)
         $sql = "INSERT INTO Orders (CustId, DeliveryUnitNum, DeliveryStreetAddress, DeliveryCity, DeliveryProvince, DeliveryPostCode)
                 VALUES (?, ?, ?, ?, ?,?)";
 
@@ -194,9 +197,6 @@ function addNewAddress(){
             $stmt->execute();
             $affectedRows = $stmt->affected_rows;
             
-            //TEST
-            // echo $affectedRows;
-
             if (!$affectedRows){
                 echo '{ "status": "Oops. Something is missing. Please fill out all the fields" }';
             } else if ($affectedRows == 1) {
@@ -204,6 +204,7 @@ function addNewAddress(){
                 //get updated CustId
                 // $sql2 = "SELECT DISTINCT * FROM Orders WHERE CustId = ".$CustIdRetrieved;
 
+                // Get all of the delivery addresses of the user
                 $sql2 = "SELECT DISTINCT c.Email, o.DeliveryStreetAddress, o.DeliveryUnitNum, o.DeliveryCity, o.DeliveryProvince, o.DeliveryPostCode
                         FROM customers c
                         INNER JOIN orders o
@@ -212,11 +213,6 @@ function addNewAddress(){
 
                 $getNewAdd = $db_conn->query($sql2);
 
-                if ($db_conn->error) {
-                    $error = $db_conn->error;
-                    echo $error;
-                }
-                
                 if ($getNewAdd->num_rows > 0){
 
                     $customersNew = array("status" => "NewAddressOK");
@@ -229,6 +225,7 @@ function addNewAddress(){
                     } //End While()
         
                     echo json_encode($customersNew);
+                    
                 } else {
                     // in case of error, send out an error message
                     echo '{ "status": "Something went wrong." }';
