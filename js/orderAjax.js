@@ -185,7 +185,7 @@ var order = function(response) {
     var estimatedTime = new Date(time.setMinutes(time.getMinutes() + 30));
     /* converted estimatedTime to string type, then used substr function to get rid of the part that we don't need */
     var convertedEsTime = (estimatedTime.toString()).substr(0, 25);
-    alert(convertedEsTime);
+    // alert(convertedEsTime);
     if (response.status == "succeed") {
         $("#status").html("Thank you!");
         $("#orderNumber").html("order number: " + response.orderId);
@@ -195,7 +195,7 @@ var order = function(response) {
         $("#status").html("Erro occured");
     }
 
-    alert("www");
+    // alert("www");
     console.log(response.orderId);
 
 }

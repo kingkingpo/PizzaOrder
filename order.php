@@ -2,61 +2,118 @@
 
 <?php include('header.php'); ?>
 
+<div id="wrap-login">
+<!-- log-in form -->
 <div class="container-fluid">
-	
 	<h1 id="plzLogIn">Please login</h1>
 
 	<form method="POST" id="emailForm" style="width: 500px;">
-		<div class="form-group">
-			<label for="email">Email address</label>
-			<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" required autofocus>
-			<span class="error"><?php if(isset($emailErr)) echo $emailErr;?></span>
+		<div class="form-group row">
+			<label for="email" class="col-sm-3 col-form-label">Email address</label>
+			<div class="col-sm-9">
+				<input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email" required autofocus>
+			</div>
 		</div>
 
 		<input type="submit" id="btnLogin" name="login" value="Login" />
 	</form>
-
 </div>
 
-<div class="container-fluid">
-	<div id="div1">Please log-in first</div>
+<div id="div1">Please log-in first</div>
 
-	<form method="POST" id="saveUserInfo" style="width: 500px;">
-		<div class="form-group">
-			<label for="fullName">Name</label>
-			<input type="text" class="form-control" id="fullName" name="fullName" required>
+<!-- if there is no existing user information, show a form to save user-information -->
+<div class="container-fluid" >
+	<form method="POST" id="saveUserInfo" style="width:500px; margin-top: 30px;">
+		<div class="form-group row">
+			<label for="fullName" class="col-sm-3 col-form-label">Name</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="fullName" name="fullName" required>
+			</div>
 		</div>
-		<div class="form-group">
-			<label for="phoneNum">Phone Number</label>
-			<input type="text" class="form-control" id="phoneNum" name="phoneNum" required>
+		<div class="form-group row">
+			<label for="phoneNum" class="col-sm-3 col-form-label">Phone Number</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="phoneNum" name="phoneNum" required>
+			</div>
 		</div>
-		<div class="form-group">
-			<label for="unitNum">Unit Number</label>
-			<input type="text" class="form-control" id="unitNum" name="unitNum" required>
+		<div class="form-group row">
+			<label for="unitNum" class="col-sm-3 col-form-label">Unit Number</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="unitNum" name="unitNum" required>
+			</div>
 		</div>
-
-		<div class="form-group">
-			<label for="street">Street address</label>
-			<input type="text" class="form-control" id="street" name="street" required>
+		<div class="form-group row">
+			<label for="street" class="col-sm-3 col-form-label">Street address</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="street" name="street" required>
+			</div>
 		</div>
-		<div class="form-group">
-			<label for="city">City</label>
-			<input type="text" class="form-control" id="city" name="city" required>
+		<div class="form-group row">
+			<label for="city" class="col-sm-3 col-form-label">City</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="city" name="city" required>
+			</div>
 		</div>
-		<div class="form-group">
-			<label for="province">Province</label>
-			<input type="text" class="form-control" id="province" name="province" required>
+		<div class="form-group row">
+			<label for="province" class="col-sm-3 col-form-label">Province</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="province" name="province" required>
+			</div>	
 		</div>
-		<div class="form-group">
-			<label for="postalCode">Postal Code</label>
-			<input type="text" class="form-control" id="postalCode" name="postalCode" required>
+		<div class="form-group row">
+			<label for="postalCode" class="col-sm-3 col-form-label">Postal Code</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="postalCode" name="postalCode" required>
+			</div>
 		</div>
 		<input type="submit" id="btnSave" name="btnSave" value="Save" />
 	</form>
 </div>
 
+
 <div id="addressList"></div>
-<button type='button' id="addAddress" onclick='addAddress()' >Add Address</button>
+<div id="addressListNew"></div>
+
+<button type='button' class="btn btn-primary" id="btnAddAddress">Add a new address</button>
+
+<!-- display a form to save a new address -->
+<div class="container-fluid" >
+	<form method="POST" id="newAddressForm" style="width:500px; margin-top: 30px; border:1px solid #bdc3c7; radius: 1px;">
+		<div class="form-group row">
+			<label for="unitNum" class="col-sm-3 col-form-label">Unit Number</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="unitNumNew" name="unitNumNew" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="street" class="col-sm-3 col-form-label">Street address</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="streetNew" name="streetNew" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="city" class="col-sm-3 col-form-label">City</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="cityNew" name="cityNew" required>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="province" class="col-sm-3 col-form-label">Province</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="provinceNew" name="provinceNew" required>
+			</div>	
+		</div>
+		<div class="form-group row">
+			<label for="postalCode" class="col-sm-3 col-form-label">Postal Code</label>
+			<div class="col-sm-9">
+				<input type="text" class="form-control" id="postalCodeNew" name="postalCodeNew" required>
+			</div>
+		</div>
+		<input type="submit" id="saveNewAddress" name="saveNewAddress" value="Save" />
+	</form>
+</div>
+
+
 <div id="choosePizza">
 <!-- Pizza Name -->
 <h4>Please choose the type of pizza</h4>
@@ -146,5 +203,6 @@
 </br><button type='button' onclick='completeOrder()' > 공사중 place another order</button>
 </div>
 
+</div> <!-- end #wrap-Login-->
 </body>
 </html>

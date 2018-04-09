@@ -2,8 +2,8 @@
 
 /*
  * Course:          INFO  - LAMP 2
- * Program:
- * Date:            2018-April-10
+ * Project:         Pizza Order
+ * Submission:      2018-April-13
  * Group Members:   
  */
 

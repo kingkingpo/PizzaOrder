@@ -111,7 +111,7 @@ function saveUserInfo() {
             // $lastId = $db_conn->lastInsertId();
             
             if (!$affectedRows){
-                echo '{ "status": "Oops. Something is missing. Please fill all the fields" }';
+                echo '{ "status": "Oops. Something is missing. Please fill out all the fields" }';
         
             } else if ($affectedRows == 1) {
                 // customer 테이블에 사용자 정보 업데이트 성공하면
@@ -151,5 +151,91 @@ function saveUserInfo() {
 }
 } // end saveUserInfo()
 
+
+// SAVE NEW ADDRESS
+function addNewAddress(){
+
+    if ( isset($_POST['emailNew']) && isset($_POST['streetNew']) && isset($_POST['unitNumNew']) 
+        && isset($_POST['cityNew']) && isset($_POST['provinceNew']) && isset($_POST['postalCodeNew'])) {
+
+        // connect to the DB
+        $db_conn = connect_db();
+
+        // sanitize user inputs
+        $emailNew = $db_conn->real_escape_string($_POST['emailNew']);
+        $unitNumNew = $db_conn->real_escape_string($_POST['unitNumNew']);
+        $streetNew = $db_conn->real_escape_string($_POST['streetNew']);
+        $cityNew = $db_conn->real_escape_string($_POST['cityNew']);
+        $provinceNew = $db_conn->real_escape_string($_POST['provinceNew']);
+        $postalCodeNew = $db_conn->real_escape_string($_POST['postalCodeNew']);
+
+        // Get user id from the email address
+        $sqlId = "SELECT CustId FROM Customers WHERE Email = '".$emailNew. "'";
+        $resultID = $db_conn->query($sqlId);
+        
+        if ($resultID->num_rows > 0){
+
+            while ($rowId = $resultID->fetch_assoc()){
+                $CustIdRetrieved = $rowId['CustId'];
+            }
+        }
+
+        // Update orders table
+        $sql = "INSERT INTO Orders (CustId, DeliveryUnitNum, DeliveryStreetAddress, DeliveryCity, DeliveryProvince, DeliveryPostCode)
+                VALUES (?, ?, ?, ?, ?,?)";
+
+        $stmt = $db_conn->stmt_init();
+
+        if(!$stmt->prepare($sql)) {
+            $error = $stmt->error;
+            echo $error;
+        } else {
+            $stmt->bind_param('isssss', $CustIdRetrieved, $unitNumNew, $streetNew, $cityNew, $provinceNew, $postalCodeNew);
+            $stmt->execute();
+            $affectedRows = $stmt->affected_rows;
+            
+            //TEST
+            // echo $affectedRows;
+
+            if (!$affectedRows){
+                echo '{ "status": "Oops. Something is missing. Please fill out all the fields" }';
+            } else if ($affectedRows == 1) {
+
+                //get updated CustId
+                $sql2 = "SELECT * FROM Orders WHERE CustId = ".$CustIdRetrieved;
+                $getNewAdd = $db_conn->query($sql2);
+
+                if ($db_conn->error) {
+                    $error = $db_conn->error;
+                    echo $error;
+                }
+                
+                if ($getNewAdd->num_rows > 0){
+
+                    $customersNew = array("status" => "NewAddressOK");
+                    $customersNew['newAddress'] = array();
+        
+                    while ($row = $getNewAdd->fetch_assoc()){
+        
+                        array_push($customersNew['newAddress'], $row);
+        
+                    } //End While()
+        
+                    echo json_encode($customersNew);
+                } else {
+                    // in case of error, send out an error message
+                    echo '{ "status": "Something went wrong." }';
+                }
+
+            }
+        
+        // disconnect DB
+        disconnect_db($db_conn);
+    }
+
+    }
+
+
+}
 
 ?>

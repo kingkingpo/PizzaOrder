@@ -97,3 +97,21 @@ aside {
     margin-left: 50%;
     height: 300px;
 }
+
+
+/***************************
+/**** Login Page ***********/
+#wrap-login {
+    border: 2px solid yellow;
+    padding-left: 30px;
+    margin-top: 30px;
+}
+
+#div1 {
+    padding-left: 15px;
+    margin-top: 15px;
+    font-size: 1.1em;   
+    /* font-weight: bold; */
+    color: navy;
+    font-style: italic; 
+}
