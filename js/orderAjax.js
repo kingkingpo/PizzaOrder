@@ -196,7 +196,7 @@ var order = function(response) {
         $("#status").html("Erro occured");
     }
 
-    // alert("www");
-    console.log(response.orderId);
+    
+    console.log(response);
 
 }

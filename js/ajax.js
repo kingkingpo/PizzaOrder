@@ -203,6 +203,7 @@ $(document).ready( function(){
 
 	
 		}
+		console.log(response);
 	}
 
 	$.get("getUserInfo.php", displayUserAddress);
