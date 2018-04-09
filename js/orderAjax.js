@@ -22,6 +22,7 @@ function chooseAddress(row) {
 
 
     $("#addressList").hide();
+	$("#addressListNew").hide();
     $("#choosePizza").show();
 
 
