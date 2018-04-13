@@ -254,7 +254,7 @@ function chooseAddress(row) {
     sendOrders.DeliveryProvince = document.getElementById('DeliveryProvince_' + row).innerHTML;
     sendOrders.DeliveryPostCode = document.getElementById('DeliveryPostCode_' + row).innerHTML;
 
-
+    $("#btnAddAddress").hide();
     $("#addressList").hide();
     $("#addressListNew").hide();
     $("#choosePizza").show();
