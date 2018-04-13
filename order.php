@@ -200,7 +200,7 @@
 <table id="finalAddress" ></table>
 <table id="finalPizzaTable" ></table>
 </br><button class='BtBack' type='button' onclick='()' ><span>공사중 Cancel</span> </button>
-</br><button class='BtNext' type='button' onclick='completeOrder()' ><span>Order</span></button>
+</br><button class='BtNextLong' type='button' onclick='completeOrder()' ><span>Order</span></button>
 </div>
 
 <div id="step7Page">
