@@ -33,9 +33,9 @@
           <li><a href="#">Menu</a></li>
           <li><a href="#">Deals</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <!-- <ul class="nav navbar-nav navbar-right">
           <li id="menuLogin"><a href="./order.php">
           <span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
-        </ul>
+        </ul> -->
       </div>
     </nav>
