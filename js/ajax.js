@@ -415,6 +415,15 @@ function completeOrder() {
 
     $.post("orderAjax.php", sendOrders, order);
 }
+
+function placeAnotherOrder() {
+    $("#addressList").show();
+    $("#addressListNew").show();
+
+    $("#step6Page").hide();
+    $("#step7Page").hide();
+}
+
 var order = function(response) {
     var time = new Date();
     var estimatedTime = new Date(time.setMinutes(time.getMinutes() + 30));
