@@ -39,16 +39,16 @@ function getUserInfo() {
 
             while ($rowId = $resultId->fetch_assoc()){
                 $custId = $rowId['CustId'];
-                $_SESSION["CustId"] = $custId;
             }
         }
 
         // Get exising delivery addresses
-        $sql = "SELECT DISTINCT c.Email, o.DeliveryStreetAddress, o.DeliveryUnitNum, o.DeliveryCity, o.DeliveryProvince, o.DeliveryPostCode
+        $sql = "SELECT DISTINCT o.CustId, c.Email, o.DeliveryStreetAddress, o.DeliveryUnitNum, o.DeliveryCity, o.DeliveryProvince, o.DeliveryPostCode
                 FROM customers c
                 INNER JOIN orders o
                 ON c.CustId = o.CustId
                 WHERE email='" .$email."'";
+  
         
         $result = $db_conn->query($sql);
 
@@ -179,7 +179,6 @@ function addNewAddress(){
 
             while ($rowId = $resultID->fetch_assoc()){
                 $CustIdRetrieved = $rowId['CustId'];
-                $_SESSION["CustId"] = $CustIdRetrieved;
             }
         }
 
@@ -209,7 +208,7 @@ function addNewAddress(){
                         FROM customers c
                         INNER JOIN orders o
                         ON c.CustId = o.CustId
-                        WHERE email='" .$emailNew."'";
+                        WHERE c.Email='" .$emailNew."'";
 
                 $getNewAdd = $db_conn->query($sql2);
 
