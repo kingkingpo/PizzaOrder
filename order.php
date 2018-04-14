@@ -193,13 +193,13 @@
   </br></br><button class='BtFinal' type='button' onclick='completNotIncludeCurrent()' >Complete the order, but do not include the current pizza</button>
   </br></br><button class='BtFinal' type='button' onclick='addPizza()' >Add another pizza to the order</button>
   </br></br><button class='BtFinal' type='button' onclick='discardCurrentAndAddPizza()' >Discard the current pizza and add another pizza to the order </button>
-  </br></br><button class='BtFinal' type='button' onclick='()' >공사중 Cancel the order </button>
+  </br></br><button class='BtFinal' type='button' onclick='cancel()' >Cancel the order</button>
 </div>
 
 <div id="step6Page">
 <table id="finalAddress" ></table>
 <table id="finalPizzaTable" ></table>
-</br><button class='BtBack' type='button' onclick='()' ><span>공사중 Cancel</span> </button>
+</br><button class='BtBack' type='button' onclick='cancel()' ><span>Cancel the order</span> </button>
 </br><button class='BtNextLong' type='button' onclick='completeOrder()' ><span>Order</span></button>
 </div>
 

@@ -153,7 +153,7 @@ $(document).ready(function() {
                     "</td><td id='DeliveryCity_" + r + "'>" + response.customers[r].City +
                     "</td><td id='DeliveryProvince_" + r + "'>" + response.customers[r].Province +
                     "</td><td id='DeliveryPostCode_" + r + "'>" + response.customers[r].PostCode +
-                    "</td><td><button id='submitAddress' type='button' onclick='chooseAddress(" + r + ")'>Next</button></td></tr>"
+                    "</td><td><button class='BtNext' id='submitAddress' type='button' onclick='chooseAddress(" + r + ")'><span>Next</span></button></td></tr>"
                 );
 
             } // end FOR loop
@@ -406,6 +406,29 @@ function completeIncludeCurrent() {
         );
         i++;
     }
+}
+
+// redirect user to initial page and discard all pizzas in the current order
+function cancel() {
+    var i = 0;
+    while (sendOrders.PizzaType[i]) {
+        sendOrders.PizzaType.pop();
+        sendOrders.Size.pop();
+        sendOrders.DoughType.pop();
+        sendOrders.SauceType.pop();
+        sendOrders.CheeseType.pop();
+        sendOrders.Toppings.pop();
+        if(sendOrders.PizzaType.length == 1) {
+            sendOrders.PizzaType.shift();
+            sendOrders.Size.shift();
+            sendOrders.DoughType.shift();
+            sendOrders.SauceType.shift();
+            sendOrders.CheeseType.shift();
+            sendOrders.Toppings.shift();
+        }
+        i++;
+    }
+    window.location.href = 'index.php';
 }
 
 function completeOrder() {
