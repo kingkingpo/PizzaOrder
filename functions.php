@@ -144,9 +144,45 @@ function saveUserInfo() {
         
         // disconnect DB
         disconnect_db($db_conn);
+        }
+    }
+} // end saveUserInfo()
+
+//return address info into json format 
+function getAddresses(){
+    
+    if(isset($_REQUEST['CustId'])){
+        // Get exising delivery addresses
+        $sql = "SELECT DISTINCT CustId, DeliveryStreetAddress, DeliveryUnitNum, DeliveryCity, DeliveryProvince, DeliveryPostCode
+                FROM orders 
+                WHERE CustId='" .$_REQUEST['CustId']."'";
+       
+       $db_conn = connect_db();
+        $result = $db_conn->query($sql);
+
+        if ($result->num_rows > 0){
+
+            $customers = array("status" => "OK");
+            $customers['customers'] = array();
+
+            while ($row = $result->fetch_assoc()){
+
+                array_push($customers['customers'], $row);
+
+            } //End While-loop
+
+            echo json_encode($customers);
+        }
+         else{
+            // if no result, send out an error message
+            echo '{ "status": "No result." }';
+        }
+    }
+    else{
+        // if no result, send out an error message
+        echo '{ "status": "CustId is not found." }';
     }
 }
-} // end saveUserInfo()
 
 
 // SAVE NEW ADDRESS

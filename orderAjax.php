@@ -14,7 +14,7 @@ echo $status;
 
 disconnect_db($db_conn);
 
-
+//save CustId and address info in Orders table
 function saveOrders($db_conn){
     $qry="INSERT INTO Orders SET CustId=" .$_REQUEST["CustId"]  ." , DeliveryStreetAddress='" .$_REQUEST['DeliveryStreetAddress'] 
     ."', DeliveryUnitNum='" .$_REQUEST['UnitNum'] ."', DeliveryCity='" .$_REQUEST['DeliveryCity'] 
@@ -35,6 +35,7 @@ function saveOrders($db_conn){
     return $orderId["LAST_INSERT_ID()"];
 }
 
+//save pizza order info in Order_Details DB
 function saveOrderDetails($db_conn,$orderId){
     $length=count($_REQUEST['PizzaType']);
     for($i=0;$i<$length;$i++){
@@ -55,12 +56,5 @@ function saveOrderDetails($db_conn,$orderId){
     
 }
 
-
-function save_data($db_conn){
-    $content= $db_conn->real_escape_string($_POST['postContent']);
-    $poster = $db_conn->real_escape_string($_POST['posterName']);
-    $qry = "insert into wall_posts (postContent, posterName) values ('$content', '$poster');";
-    $db_conn->query($qry);
-}
 
 ?>
