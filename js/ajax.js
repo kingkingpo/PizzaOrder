@@ -153,7 +153,7 @@ $(document).ready(function() {
                     "</td><td id='DeliveryCity_" + r + "'>" + response.customers[r].City +
                     "</td><td id='DeliveryProvince_" + r + "'>" + response.customers[r].Province +
                     "</td><td id='DeliveryPostCode_" + r + "'>" + response.customers[r].PostCode +
-                    "</td><td><button id='submitAddress' type='button' onclick='chooseAddress(" + r + ")'>Next</button></td></tr>"
+                    "</td><td><button class='BtNext' id='submitAddress' type='button' onclick='chooseAddress(" + r + ")'><span>Next</span></button></td></tr>"
                 );
 
             } // end FOR loop
