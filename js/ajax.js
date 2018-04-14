@@ -49,7 +49,7 @@ $(document).ready(function() {
 
     // function to run if the Log-in request succeeds
     var displayUserAddress = function(response) {
-            
+
             $("#plzLogIn").hide();
             $("#btnLogin").hide();
             // $("#btnAddAddress").show();
@@ -75,13 +75,13 @@ $(document).ready(function() {
                 if ((response.status == "OK") && ($("#div1").html() == "Please log-in first")) {
                     $("#addressList").html("<table id=\"addressTable\" ></table>");
                 }
-                
+
                 $("#addressHeading").show();
-				
-				addresses(response);
-				
-				$("#div1").hide();
-                $("#btnAddAddress").show();     
+
+                addresses(response);
+
+                $("#div1").hide();
+                $("#btnAddAddress").show();
             }
 
         } //end displayUserAddress()
@@ -168,76 +168,76 @@ $(document).ready(function() {
     // store address info into sendOrders object
     $("#newAddressForm").submit(function(event) {
 
-/*         var emailNew = $("#email").val();
-        var unitNumNew = $("#unitNumNew").val();
-        var streetNew = $("#streetNew").val();
-        var cityNew = $("#cityNew").val();
-        var provinceNew = $("#provinceNew").val();
-        var postalCodeNew = $("#postalCodeNew").val();
-		 */
+        /*         var emailNew = $("#email").val();
+                var unitNumNew = $("#unitNumNew").val();
+                var streetNew = $("#streetNew").val();
+                var cityNew = $("#cityNew").val();
+                var provinceNew = $("#provinceNew").val();
+                var postalCodeNew = $("#postalCodeNew").val();
+        		 */
 
-		sendOrders.UnitNum=$("#unitNumNew").val();
-		sendOrders.DeliveryStreetAddress= $("#streetNew").val();
-		sendOrders.DeliveryCity=$("#cityNew").val();
-		sendOrders.DeliveryProvince= $("#provinceNew").val();
-		sendOrders.DeliveryPostCode= $("#postalCodeNew").val();
+        sendOrders.UnitNum = $("#unitNumNew").val();
+        sendOrders.DeliveryStreetAddress = $("#streetNew").val();
+        sendOrders.DeliveryCity = $("#cityNew").val();
+        sendOrders.DeliveryProvince = $("#provinceNew").val();
+        sendOrders.DeliveryPostCode = $("#postalCodeNew").val();
 
-		$("#btnAddAddress").hide();
-		$("#addressList").hide();
-		$("#newAddressForm").hide();
-		$("#choosePizza").show();
-/*         var userInfoNew = {
-            "emailNew": emailNew,
-            "unitNumNew": unitNumNew,
-            "streetNew": streetNew,
-            "cityNew": cityNew,
-            "provinceNew": provinceNew,
-            "postalCodeNew": postalCodeNew
-        }
+        $("#btnAddAddress").hide();
+        $("#addressList").hide();
+        $("#newAddressForm").hide();
+        $("#choosePizza").show();
+        /*         var userInfoNew = {
+                    "emailNew": emailNew,
+                    "unitNumNew": unitNumNew,
+                    "streetNew": streetNew,
+                    "cityNew": cityNew,
+                    "provinceNew": provinceNew,
+                    "postalCodeNew": postalCodeNew
+                }
 
-		$.post("addNewAddress.php", userInfoNew, displayNewAddress);
-		*/
+        		$.post("addNewAddress.php", userInfoNew, displayNewAddress);
+        		*/
         event.preventDefault();
- 
+
     });
 
 
 
-   /*  var displayNewAddress = function(response) {
+    /*  var displayNewAddress = function(response) {
 
-        if (response.status == "NewAddressOK") {
+         if (response.status == "NewAddressOK") {
 
-            console.log("ADD NEW success");
-            $("#plzLogIn").hide();
-            $("#btnLogin").hide();
-            $("#saveUserInfo").hide();
-            $("#btnAddAddress").hide();
-            $("#newAddressForm").hide();
-            $("#div1").hide();
-            $("#addressList").hide();
+             console.log("ADD NEW success");
+             $("#plzLogIn").hide();
+             $("#btnLogin").hide();
+             $("#saveUserInfo").hide();
+             $("#btnAddAddress").hide();
+             $("#newAddressForm").hide();
+             $("#div1").hide();
+             $("#addressList").hide();
 
-            $("#addressListNew").html("<table id=\"tableNew\" ></table>");
+             $("#addressListNew").html("<table id=\"tableNew\" ></table>");
 
-            $("#tableNew").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
+             $("#tableNew").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
 
-            for (r in response.newAddress) {
-                $("#tableNew").append(
+             for (r in response.newAddress) {
+                 $("#tableNew").append(
 
-                    "<tr><td id='DeliveryStreetAddress_" + r + "'>" + response.newAddress[r].DeliveryStreetAddress +
-                    "</td><td id='UnitNum_" + r + "'>" + response.newAddress[r].DeliveryUnitNum +
-                    "</td><td id='DeliveryCity_" + r + "'>" + response.newAddress[r].DeliveryCity +
-                    "</td><td id='DeliveryProvince_" + r + "'>" + response.newAddress[r].DeliveryProvince +
-                    "</td><td id='DeliveryPostCode_" + r + "'>" + response.newAddress[r].DeliveryPostCode +
-                    "</td><td><button id='submitAddress' class='BtNext' type='button' onclick='chooseAddress(" + r + ")'>Next</button></td></tr>"
-                );
-            }
+                     "<tr><td id='DeliveryStreetAddress_" + r + "'>" + response.newAddress[r].DeliveryStreetAddress +
+                     "</td><td id='UnitNum_" + r + "'>" + response.newAddress[r].DeliveryUnitNum +
+                     "</td><td id='DeliveryCity_" + r + "'>" + response.newAddress[r].DeliveryCity +
+                     "</td><td id='DeliveryProvince_" + r + "'>" + response.newAddress[r].DeliveryProvince +
+                     "</td><td id='DeliveryPostCode_" + r + "'>" + response.newAddress[r].DeliveryPostCode +
+                     "</td><td><button id='submitAddress' class='BtNext' type='button' onclick='chooseAddress(" + r + ")'>Next</button></td></tr>"
+                 );
+             }
 
-            console.log(response);
-        }
+             console.log(response);
+         }
 
-    } */
+     } */
 
-  
+
 
 });
 
@@ -277,12 +277,40 @@ function choosePizza() {
     $("#choosePizza").hide();
     $("#chooseTopping").show();
 
+    /* Size 별 토핑 갯수 */
+    if (size == "S") {
+
+        var limit = 3;
+        $('input.single-checkbox').on('click', function(evt) {
+            if ($('.single-checkbox:checked').length > limit) {
+                this.checked = false;
+                alert("You can choose three toppings");
+            }
+        });
+    } else if (size == "M") {
+        var limit = 5;
+        $('input.single-checkbox').on('click', function(evt) {
+            if ($('.single-checkbox:checked').length > limit) {
+                this.checked = false;
+                alert("You can choose five toppings");
+            }
+        });
+    } else {
+        var limit = 7;
+        $('input.single-checkbox').on('click', function(evt) {
+            if ($('.single-checkbox:checked').length > limit) {
+                this.checked = false;
+                alert("You can choose seven toppings");
+            }
+        });
+    }
+
+
 }
 
 //This function is for storing topping info into sendOrders object  
 //and show step5Page
 function chooseTopping() {
-
     var toppings = "";
     toppings += (document.getElementById("GreenOlives").checked == true) ? "GreenOlives, " : "";
     toppings += (document.getElementById("Zucchini").checked == true) ? "Zucchini, " : "";
@@ -304,7 +332,6 @@ function chooseTopping() {
     $("#step5Page").show();
 
     showCurrentOrder();
-
 }
 
 //This function is for storing topping info into sendOrders object  
@@ -352,50 +379,47 @@ function discardCurrentAndAddPizza() {
 //and show address and pizza information
 function completNotIncludeCurrent() {
 
-	//check if the pizza order is only one
-	var emptyPizzaCheck=sendOrders.PizzaType[1];
-	if(typeof emptyPizzaCheck!== 'undefined' )
-	{
-		//discard current pizza
-		sendOrders.PizzaType.pop();
-		sendOrders.Size.pop();
-		sendOrders.DoughType.pop();
-		sendOrders.SauceType.pop();
-		sendOrders.CheeseType.pop();
-		sendOrders.Toppings.pop();
-	
-		$("#step5Page").hide();
+    //check if the pizza order is only one
+    var emptyPizzaCheck = sendOrders.PizzaType[1];
+    if (typeof emptyPizzaCheck !== 'undefined') {
+        //discard current pizza
+        sendOrders.PizzaType.pop();
+        sendOrders.Size.pop();
+        sendOrders.DoughType.pop();
+        sendOrders.SauceType.pop();
+        sendOrders.CheeseType.pop();
+        sendOrders.Toppings.pop();
+
+        $("#step5Page").hide();
         $("#step6Page").show();
         $("#orderSummaryFinal").html("Order Summary including Delivery Information");
-	
-		$("#finalAddress").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th></tr>");
-		$("#finalAddress").append(
-			"<tr><td>" + sendOrders.DeliveryStreetAddress +
-			"</td><td>" + sendOrders.UnitNum +
-			"</td><td>" + sendOrders.DeliveryCity +
-			"</td><td>" + sendOrders.DeliveryProvince +
-			"</td><td>" + sendOrders.DeliveryPostCode +
-			"</td></tr>"
-		);
-		var i = 0;
-		$("#finalPizzaTable").html("<tr><th></th><th>Pizza Name</th><th>Size</th><th>Dough Type</th><th>Sauce Type</th><th>Cheese Type</th><th>Topping</th></tr>");
-		while (sendOrders.PizzaType[i]) {
-			$("#finalPizzaTable").append(
-				"<tr><td>" + (i + 1) + "</td><td>" + sendOrders.PizzaType[i] +
-				"</td><td>" + sendOrders.Size[i] +
-				"</td><td>" + sendOrders.DoughType[i] +
-				"</td><td>" + sendOrders.SauceType[i] +
-				"</td><td>" + sendOrders.CheeseType[i] +
-				"</td><td>" + sendOrders.Toppings[i] + "</td></tr>"
-			);
-			i++;
-		}
-	}
-	else
-	{
-		alert("You can't order nothing!");
-	}
-    
+
+        $("#finalAddress").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th></tr>");
+        $("#finalAddress").append(
+            "<tr><td>" + sendOrders.DeliveryStreetAddress +
+            "</td><td>" + sendOrders.UnitNum +
+            "</td><td>" + sendOrders.DeliveryCity +
+            "</td><td>" + sendOrders.DeliveryProvince +
+            "</td><td>" + sendOrders.DeliveryPostCode +
+            "</td></tr>"
+        );
+        var i = 0;
+        $("#finalPizzaTable").html("<tr><th></th><th>Pizza Name</th><th>Size</th><th>Dough Type</th><th>Sauce Type</th><th>Cheese Type</th><th>Topping</th></tr>");
+        while (sendOrders.PizzaType[i]) {
+            $("#finalPizzaTable").append(
+                "<tr><td>" + (i + 1) + "</td><td>" + sendOrders.PizzaType[i] +
+                "</td><td>" + sendOrders.Size[i] +
+                "</td><td>" + sendOrders.DoughType[i] +
+                "</td><td>" + sendOrders.SauceType[i] +
+                "</td><td>" + sendOrders.CheeseType[i] +
+                "</td><td>" + sendOrders.Toppings[i] + "</td></tr>"
+            );
+            i++;
+        }
+    } else {
+        alert("You can't order nothing!");
+    }
+
 }
 
 //This function is for going to step6Page section from step5Page
@@ -462,9 +486,9 @@ function placeAnotherOrder() {
     //$("#addressListNew").show();
 
     $("#step6Page").hide();
-	$("#step7Page").hide();
+    $("#step7Page").hide();
 
-	$.post("getAddresses.php", sendOrders, showAddresses);
+    $.post("getAddresses.php", sendOrders, showAddresses);
 
 }
 
@@ -496,7 +520,7 @@ var showAddresses = function(response) {
 
     if (response.status == "OK") {
         addresses(response);
-    } else if (response.status == "No result."||response.status =="CustId is not found.") {
+    } else if (response.status == "No result." || response.status == "CustId is not found.") {
         console.log("eroor occured");
     }
     console.log(response);
@@ -504,22 +528,22 @@ var showAddresses = function(response) {
 }
 
 //address list from callback function
-function addresses(response){
+function addresses(response) {
 
-	$("#addressTable").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
+    $("#addressTable").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
 
-	for (r in response.customers) {
+    for (r in response.customers) {
 
-		$("#addressTable").append(
+        $("#addressTable").append(
 
-			"<tr><td id='DeliveryStreetAddress_" + r + "'>" + response.customers[r].DeliveryStreetAddress +
-			"</td><td id='UnitNum_" + r + "'>" + response.customers[r].DeliveryUnitNum +
-			"</td><td id='DeliveryCity_" + r + "'>" + response.customers[r].DeliveryCity +
-			"</td><td id='DeliveryProvince_" + r + "'>" + response.customers[r].DeliveryProvince +
-			"</td><td id='DeliveryPostCode_" + r + "'>" + response.customers[r].DeliveryPostCode +
-			"</td><td><button class='BtNext' id='submitAddress' type='button' onclick='chooseAddress(" + r + ")'><span>Next</span></button></td></tr>"
-		);
+            "<tr><td id='DeliveryStreetAddress_" + r + "'>" + response.customers[r].DeliveryStreetAddress +
+            "</td><td id='UnitNum_" + r + "'>" + response.customers[r].DeliveryUnitNum +
+            "</td><td id='DeliveryCity_" + r + "'>" + response.customers[r].DeliveryCity +
+            "</td><td id='DeliveryProvince_" + r + "'>" + response.customers[r].DeliveryProvince +
+            "</td><td id='DeliveryPostCode_" + r + "'>" + response.customers[r].DeliveryPostCode +
+            "</td><td><button class='BtNext' id='submitAddress' type='button' onclick='chooseAddress(" + r + ")'><span>Next</span></button></td></tr>"
+        );
 
-	}
-	$("#btnAddAddress").show();    
+    }
+    $("#btnAddAddress").show();
 }

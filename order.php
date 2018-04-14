@@ -190,16 +190,16 @@ require_once('initialize.php'); ?>
 <!-- Toppings -->
 <div id="chooseTopping">
 <h4>Please choose the topping to be added🍕</h4>
-  <input type="checkbox" id="GreenOlives" value="GreenOlives">Green Olives<br>
-  <input type="checkbox" id="Zucchini" value="Zucchini">Zucchini<br>
-  <input type="checkbox" id="Onions" value="Onions">Onions<br>
-  <input type="checkbox" id="Garlic" value="Garlic">Garlic<br>
-  <input type="checkbox" id="Mushrooms" value="Mushrooms">Mushrooms<br>
-  <input type="checkbox" id="Pineapple" value="Pineapple">Pineapple<br>
-  <input type="checkbox" id="Broccoli" value="Broccoli">Broccoli<br>
-  <input type="checkbox" id="Tomatoes" value="Tomatoes">Tomatoes<br>
-  <input type="checkbox" id="GreenPeppers" value="GreenPeppers">Green Peppers<br>
-  <input type="checkbox" id="Spinach" value="Spinach">Spinach<br>
+  <input class="single-checkbox" type="checkbox" id="GreenOlives" value="GreenOlives">Green Olives<br>
+  <input class="single-checkbox" type="checkbox" id="Zucchini" value="Zucchini">Zucchini<br>
+  <input class="single-checkbox" type="checkbox" id="Onions" value="Onions">Onions<br>
+  <input class="single-checkbox" type="checkbox" id="Garlic" value="Garlic">Garlic<br>
+  <input class="single-checkbox" type="checkbox" id="Mushrooms" value="Mushrooms">Mushrooms<br>
+  <input class="single-checkbox" type="checkbox" id="Pineapple" value="Pineapple">Pineapple<br>
+  <input class="single-checkbox" type="checkbox" id="Broccoli" value="Broccoli">Broccoli<br>
+  <input class="single-checkbox" type="checkbox" id="Tomatoes" value="Tomatoes">Tomatoes<br>
+  <input class="single-checkbox" type="checkbox" id="GreenPeppers" value="GreenPeppers">Green Peppers<br>
+  <input class="single-checkbox" type="checkbox" id="Spinach" value="Spinach">Spinach<br>
   
   <button class='BtNextLong' type='button' onclick='chooseTopping()' ><span>Next</span></button>
 </div>
