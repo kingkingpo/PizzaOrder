@@ -171,7 +171,7 @@ $(document).ready(function() {
     });
 
     // When the user clicks 'save a new address' button,
-    // load data from the server using a HTTP POST request
+    // store address info into sendOrders object
     $("#newAddressForm").submit(function(event) {
 
 /*         var emailNew = $("#email").val();
@@ -251,17 +251,6 @@ $(document).ready(function() {
 
 
 });
-
-
-/* function preventZoreOrder(){
-
-}
-$.post("getUserInfo.php", $(this).serialize(),
-            displayUserAddress);
-        event.preventDefault(); */
-
-
-
 
 
 function chooseAddress(row) {
