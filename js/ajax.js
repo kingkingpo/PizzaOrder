@@ -310,7 +310,7 @@ function chooseTopping() {
 //This function is for storing topping info into sendOrders object  
 //and show step5Page
 function showCurrentOrder() {
-
+    $("#orderSummary").html("Order Summary");
     var lastIndex = sendOrders.PizzaType.length - 1;
     $("#pizzaTable").html("<tr><th>Pizza Name</th><th>Size</th><th>Dough Type</th><th>Sauce Type</th><th>Cheese Type</th><th>Topping</th></tr>");
 
@@ -365,7 +365,8 @@ function completNotIncludeCurrent() {
 		sendOrders.Toppings.pop();
 	
 		$("#step5Page").hide();
-		$("#step6Page").show();
+        $("#step6Page").show();
+        $("#orderSummaryFinal").html("Order Summary including Delivery Information");
 	
 		$("#finalAddress").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th></tr>");
 		$("#finalAddress").append(
@@ -402,6 +403,7 @@ function completNotIncludeCurrent() {
 function completeIncludeCurrent() {
     $("#step5Page").hide();
     $("#step6Page").show();
+    $("#orderSummaryFinal").html("Order Summary including Delivery Information");
 
     $("#finalAddress").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th></tr>");
     $("#finalAddress").append(
