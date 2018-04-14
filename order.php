@@ -187,6 +187,7 @@
 </div>
 
 <div id="step5Page">
+<h1 id="orderSummary"></h1>
 <table id="pizzaTable" >
 </table>
 
@@ -198,6 +199,7 @@
 </div>
 
 <div id="step6Page">
+<h1 id="orderSummaryFinal"></h1>
 <table id="finalAddress" ></table>
 <table id="finalPizzaTable" ></table>
 </br><button class='BtBack' type='button' onclick='cancel()' ><span>Cancel the order</span> </button>
