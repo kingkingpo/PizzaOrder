@@ -424,24 +424,12 @@ function completeIncludeCurrent() {
 
 // redirect user to initial page and discard all pizzas in the current order
 function cancel() {
-    var i = 0;
-    while (sendOrders.PizzaType[i]) {
-        sendOrders.PizzaType.pop();
-        sendOrders.Size.pop();
-        sendOrders.DoughType.pop();
-        sendOrders.SauceType.pop();
-        sendOrders.CheeseType.pop();
-        sendOrders.Toppings.pop();
-        if (sendOrders.PizzaType.length == 1) {
-            sendOrders.PizzaType.shift();
-            sendOrders.Size.shift();
-            sendOrders.DoughType.shift();
-            sendOrders.SauceType.shift();
-            sendOrders.CheeseType.shift();
-            sendOrders.Toppings.shift();
-        }
-        i++;
-    }
+    sendOrders.PizzaType = [];
+    sendOrders.Size = [];
+    sendOrders.DoughType = [];
+    sendOrders.SauceType = [];
+    sendOrders.CheeseType = [];
+    sendOrders.Toppings = [];
     window.location.href = 'index.php';
 }
 
