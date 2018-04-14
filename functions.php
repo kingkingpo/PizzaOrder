@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * File name:     functions.php
+ * Purpose:       Keeps functions on one file to maintain the codes easily
+ */
+
 
 // Connect to DB
 function connect_db(){
@@ -17,7 +22,12 @@ function disconnect_db($db_conn){
 }
 
 
-// Check user email, and get user information stored in the DB
+/*
+ * Function:    getUserInfo()
+ * Purpose:     Sends the user's delivery addresses if his/her email already exists in the DB
+ * Return:      an array of the user's addersses which are converted into JSON,
+ *              or an erro message saying "No email found"
+ */
 function getUserInfo() {
 
     if ( isset($_POST['email']) ) {

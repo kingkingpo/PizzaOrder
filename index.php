@@ -15,7 +15,7 @@
 
  /*
   * File name:     index.php
-  * Purpose:       Provides the followings:
+  * Purpose:       Provides the following:
   *                - a welcome message
   *                - instructions on how to use the site.
   *                - a button to begin the ordering process                

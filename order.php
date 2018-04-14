@@ -2,6 +2,7 @@
 
 /*
   * File name:     order.php
+  *
   * Purpose:       Consists of the following order steps:
   *                	step 1) Login with a user's email address
   *                	step 2) User validation
