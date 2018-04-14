@@ -16,9 +16,16 @@ disconnect_db($db_conn);
 
 //save CustId and address info in Orders table
 function saveOrders($db_conn){
-    $qry="INSERT INTO Orders SET CustId=" .$_REQUEST["CustId"]  ." , DeliveryStreetAddress='" .$_REQUEST['DeliveryStreetAddress'] 
-    ."', DeliveryUnitNum='" .$_REQUEST['UnitNum'] ."', DeliveryCity='" .$_REQUEST['DeliveryCity'] 
-    ."', DeliveryProvince='" .$_REQUEST['DeliveryProvince'] ."', DeliveryPostCode='" .$_REQUEST['DeliveryPostCode'] ."';"; 
+    $CustId = $db_conn->real_escape_string($_REQUEST['CustId']);
+    $DeliveryStreetAddress = $db_conn->real_escape_string($_REQUEST['DeliveryStreetAddress']);
+    $DeliveryUnitNum = $db_conn->real_escape_string($_REQUEST['UnitNum']);
+    $DeliveryCity = $db_conn->real_escape_string($_REQUEST['DeliveryCity']);
+    $DeliveryProvince = $db_conn->real_escape_string($_REQUEST['DeliveryProvince']);
+    $DeliveryPostCode = $db_conn->real_escape_string($_REQUEST['DeliveryPostCode']);
+
+    $qry="INSERT INTO Orders SET CustId=" .$CustId  ." , DeliveryStreetAddress='" .$DeliveryStreetAddress 
+    ."', DeliveryUnitNum='" .$DeliveryUnitNum ."', DeliveryCity='" .$DeliveryCity 
+    ."', DeliveryProvince='" .$DeliveryProvince ."', DeliveryPostCode='" .$DeliveryPostCode ."';"; 
     
     $db_conn->query($qry);
 
@@ -39,10 +46,20 @@ function saveOrders($db_conn){
 function saveOrderDetails($db_conn,$orderId){
     $length=count($_REQUEST['PizzaType']);
     for($i=0;$i<$length;$i++){
-        $qry="INSERT INTO Order_Details SET OrderId=" .$orderId ." , PizzaType='" .$_REQUEST['PizzaType'][$i]
-         ."', SizeType='" .$_REQUEST['Size'][$i] ."', DoughType='" .$_REQUEST['DoughType'][$i] 
-         ."', SauceType='" .$_REQUEST['SauceType'][$i] ."', CheeseType='" .$_REQUEST['CheeseType'][$i] 
-         ."', Toppings='" .$_REQUEST['Toppings'][$i] ."';"; 
+        
+        $PizzaType = $db_conn->real_escape_string($_REQUEST['PizzaType'][$i]);
+        $Size = $db_conn->real_escape_string($_REQUEST['Size'][$i]);
+        $DoughType = $db_conn->real_escape_string($_REQUEST['DoughType'][$i]);
+        $SauceType = $db_conn->real_escape_string($_REQUEST['SauceType'][$i]);
+        $CheeseType = $db_conn->real_escape_string($_REQUEST['CheeseType'][$i]);
+        $Toppings = $db_conn->real_escape_string($_REQUEST['Toppings'][$i]);
+        $PizzaType = $db_conn->real_escape_string($_REQUEST['PizzaType'][$i]);
+
+
+        $qry="INSERT INTO Order_Details SET OrderId=" .$orderId ." , PizzaType='" .$PizzaType
+         ."', SizeType='" .$Size ."', DoughType='" .$DoughType 
+         ."', SauceType='" .$SauceType ."', CheeseType='" .$CheeseType 
+         ."', Toppings='" .$Toppings ."';"; 
     
          $rs = $db_conn->query($qry);
    

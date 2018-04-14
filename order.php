@@ -41,7 +41,7 @@
 		<div class="form-group row">
 			<label for="unitNum" class="col-sm-3 col-form-label">Unit Number</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="unitNum" name="unitNum" required>
+				<input type="text" class="form-control" id="unitNum" name="unitNum">
 			</div>
 		</div>
 		<div class="form-group row">
@@ -89,7 +89,7 @@
 		<div class="form-group row">
 			<label for="unitNum" class="col-sm-3 col-form-label">Unit Number</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="unitNumNew" name="unitNumNew" required>
+				<input type="text" class="form-control" id="unitNumNew" name="unitNumNew">
 			</div>
 		</div>
 		<div class="form-group row">
