@@ -275,35 +275,28 @@ function choosePizza() {
     sendOrders.CheeseType.push(cheeseType);
 
     $("#choosePizza").hide();
-    $("#chooseTopping").show();
+	$("#chooseTopping").show();
+	
+	
+	
+    /* Topping number depends on Size  */
 
-    /* Size 별 토핑 갯수 */
-    if (size == "S") {
+	$('input.single-checkbox').on('click', function(evt) {
+		var size1=$('#size').val();
+		if ($('.single-checkbox:checked').length > 3 && size1=="S") {
+			this.checked = false;
+			alert("You can choose three toppings");
+		}
+		else if ($('.single-checkbox:checked').length > 5 && size1 == "M") {
+			this.checked = false;
+			alert("You can choose five toppings");
+		}
+		else if($('.single-checkbox:checked').length > 7 && size1 == "L") {
+			this.checked = false;
+			alert("You can choose seven toppings");
+		} 
+	});
 
-        var limit = 3;
-        $('input.single-checkbox').on('click', function(evt) {
-            if ($('.single-checkbox:checked').length > limit) {
-                this.checked = false;
-                alert("You can choose three toppings");
-            }
-        });
-    } else if (size == "M") {
-        var limit = 5;
-        $('input.single-checkbox').on('click', function(evt) {
-            if ($('.single-checkbox:checked').length > limit) {
-                this.checked = false;
-                alert("You can choose five toppings");
-            }
-        });
-    } else {
-        var limit = 7;
-        $('input.single-checkbox').on('click', function(evt) {
-            if ($('.single-checkbox:checked').length > limit) {
-                this.checked = false;
-                alert("You can choose seven toppings");
-            }
-        });
-    }
 
 
 }
@@ -311,6 +304,9 @@ function choosePizza() {
 //This function is for storing topping info into sendOrders object  
 //and show step5Page
 function chooseTopping() {
+	//make topping checkbox false
+	$(".single-checkbox").prop("checked", false);
+
     var toppings = "";
     toppings += (document.getElementById("GreenOlives").checked == true) ? "GreenOlives, " : "";
     toppings += (document.getElementById("Zucchini").checked == true) ? "Zucchini, " : "";
