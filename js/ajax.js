@@ -1,3 +1,5 @@
+//customer id, address and pizza information will be stored in this object
+//and these will be sent to orderAjax.php to save in DB
 var sendOrders = {
     CustId: "",
     DeliveryStreetAddress: "",
@@ -252,7 +254,8 @@ $(document).ready(function() {
 
 });
 
-
+//This function is for storing address into sendOrders object  
+//and show choosePizza section  
 function chooseAddress(row) {
     sendOrders.DeliveryStreetAddress = document.getElementById('DeliveryStreetAddress_' + row).innerHTML;
     sendOrders.UnitNum = document.getElementById('UnitNum_' + row).innerHTML;
@@ -263,12 +266,13 @@ function chooseAddress(row) {
     $("#btnAddAddress").hide();
     $("#addressList").hide();
     $("#addressListNew").hide();
-    $("#choosePizza").show();
     $("#newAddressForm").hide();
-
+	$("#choosePizza").show();
 
 }
 
+//This function is for storing pizza info into sendOrders object  
+//and show chooseTopping section  
 function choosePizza() {
     var pizzaType = document.getElementById("pizzaType").value;
     var size = document.getElementById("size").value;
@@ -287,6 +291,8 @@ function choosePizza() {
 
 }
 
+//This function is for storing topping info into sendOrders object  
+//and show step5Page
 function chooseTopping() {
 
     var toppings = "";
@@ -313,6 +319,8 @@ function chooseTopping() {
 
 }
 
+//This function is for storing topping info into sendOrders object  
+//and show step5Page
 function showCurrentOrder() {
 
     var lastIndex = sendOrders.PizzaType.length - 1;
@@ -330,6 +338,7 @@ function showCurrentOrder() {
 
 }
 
+//This function is for going to choosePizza section from step5Page
 function addPizza() {
     $("#pizzaTable").html("");
     $("#step5Page").hide();
@@ -337,6 +346,7 @@ function addPizza() {
 
 }
 
+//This function is for discard current pizza and going to choosePizza section from step5Page
 function discardCurrentAndAddPizza() {
     //discard current pizza
     sendOrders.PizzaType.pop();
@@ -350,7 +360,11 @@ function discardCurrentAndAddPizza() {
     $("#choosePizza").show();
 }
 
+//This function is for discard current pizza and going to step6Page section from step5Page
+//and show address and pizza information
 function completNotIncludeCurrent() {
+
+	//check if the pizza order is only one
 	var emptyPizzaCheck=sendOrders.PizzaType[1];
 	if(typeof emptyPizzaCheck!== 'undefined' )
 	{
@@ -395,6 +409,8 @@ function completNotIncludeCurrent() {
     
 }
 
+//This function is for going to step6Page section from step5Page
+//and show address and pizza information
 function completeIncludeCurrent() {
     $("#step5Page").hide();
     $("#step6Page").show();
@@ -434,6 +450,8 @@ function cancel() {
     window.location.href = 'index.php';
 }
 
+//send sendOrders object to orderAjax.php so that address and pizza information can be stored in DB
+//and get order number, status from order callback function
 function completeOrder() {
     $("#step6Page").hide();
     $("#step7Page").show();
@@ -449,9 +467,12 @@ function placeAnotherOrder() {
     $("#step7Page").hide();
 }
 
+
+//This is callback function which will get order number and status from orderAjax.php
+//and show estimated time which is current time + 40 miniute
 var order = function(response) {
     var time = new Date();
-    var estimatedTime = new Date(time.setMinutes(time.getMinutes() + 30));
+    var estimatedTime = new Date(time.setMinutes(time.getMinutes() + 40));
     /* converted estimatedTime to string type, then used substr function to get rid of the part that we don't need */
     var convertedEsTime = (estimatedTime.toString()).substr(0, 25);
     // alert(convertedEsTime);
