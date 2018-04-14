@@ -41,7 +41,9 @@ img {
     color: #fff;
     font-size: 1.2em;
     margin-right: 20px;
-    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
 }
 
 .navbar-custom {
@@ -68,6 +70,9 @@ img {
     text-align: center;
 }
 
+h4 {
+    font-weight: bold;
+}
 
 /***********************/
 

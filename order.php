@@ -74,6 +74,7 @@
 
 
 <!--Display the user's delivery address(es) -->
+<h1 id="addressHeading">Select the delivery address</h1><br/>
 <div id="addressList"></div>
 <div id="addressListNew"></div>
 
@@ -123,7 +124,7 @@
 <div id="choosePizza">
 
 <!-- Pizza Name -->
-<h4>Please choose the type of pizza</h4>
+<h4>Please choose the type of pizza🍕</h4>
 <select id="pizzaType">
   <option value="Classic">Classic</option>
   <option value="Hawaiian">Hawaiian</option>
@@ -134,7 +135,7 @@
 
 
 <!-- Size -->
-<h4>Please choose the size of pizza</h4>
+<h4>Please choose the size of pizza🍕</h4>
 <select id="size">
   <option value="L">Large</option>
   <option value="M">Medium</option>
@@ -142,7 +143,7 @@
 </select></br>
 
 <!-- Dough Type -->
-<h4>Please choose the dough type of pizza</h4>
+<h4>Please choose the dough type of pizza🍕</h4>
 <select id="doughType">
   <option value="stiffDough">Stiff Dough</option>
   <option value="softDough">Soft Dough</option>
@@ -150,7 +151,7 @@
 </select></br>
 
 <!-- Sauce Type -->
-<h4>Please choose the sauce to be added</h4>
+<h4>Please choose the sauce to be added🍕</h4>
 <select id="sauceType">
   <option value="exquisiteSauce">Exquisite Sauce</option>
   <option value="sicilianSauce">Sicilian Sauce</option>
@@ -158,7 +159,7 @@
 </select></br>
 
 <!-- Cheese Type -->
-<h4>Please choose the cheese to be added</h4>
+<h4>Please choose the cheese to be added🍕</h4>
 <select id="cheeseType">
   <option value="mozzarella">Mozzarella</option>
   <option value="provolone">Provolone</option>
@@ -170,7 +171,7 @@
 
 <!-- Toppings -->
 <div id="chooseTopping">
-<h4>Please choose the topping to be added</h4>
+<h4>Please choose the topping to be added🍕</h4>
   <input type="checkbox" id="GreenOlives" value="GreenOlives">Green Olives<br>
   <input type="checkbox" id="Zucchini" value="Zucchini">Zucchini<br>
   <input type="checkbox" id="Onions" value="Onions">Onions<br>

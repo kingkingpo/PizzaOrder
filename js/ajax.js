@@ -28,6 +28,7 @@ $(document).ready(function() {
     $("#saveUserInfo").hide();
     $("#btnAddAddress").hide();
     $("#newAddressForm").hide();
+    $("#addressHeading").hide();
 
     //**********************************************
     // LOG IN **************************************
@@ -35,6 +36,10 @@ $(document).ready(function() {
     // When the user clicks Login button,
     // load data from the server using a HTTP POST request
     $("#emailForm").submit(function(event) {
+        // hide email form
+        $("#emailForm").hide();
+        $("#plzLogIn").hide();
+        $("#div1").hide();
 
         $.post("getUserInfo.php", $(this).serialize(),
             displayUserAddress);
@@ -44,7 +49,7 @@ $(document).ready(function() {
 
     // function to run if the Log-in request succeeds
     var displayUserAddress = function(response) {
-
+            
             $("#plzLogIn").hide();
             $("#btnLogin").hide();
             // $("#btnAddAddress").show();
@@ -70,7 +75,8 @@ $(document).ready(function() {
                 if ((response.status == "OK") && ($("#div1").html() == "Please log-in first")) {
                     $("#addressList").html("<table id=\"table1\" ></table>");
                 }
-
+                
+                $("#addressHeading").show();
                 $("#table1").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
 
                 for (r in response.customers) {
@@ -88,11 +94,10 @@ $(document).ready(function() {
                     $("#div1").hide();
                     $("#btnAddAddress").show();
 
-                }
+                }       
             }
 
         } //end displayUserAddress()
-
 
     //**********************************************
     // SAVE NEW USER INFORMATION********************
@@ -267,7 +272,8 @@ function chooseAddress(row) {
     $("#addressList").hide();
     $("#addressListNew").hide();
     $("#newAddressForm").hide();
-	$("#choosePizza").show();
+    $("#choosePizza").show();
+    $("#addressHeading").hide();
 
 }
 
@@ -459,9 +465,17 @@ function completeOrder() {
     $.post("orderAjax.php", sendOrders, order);
 }
 
+// Upon the completion of the order, user is given the opportunity to place another order
 function placeAnotherOrder() {
+    sendOrders.PizzaType = [];
+    sendOrders.Size = [];
+    sendOrders.DoughType = [];
+    sendOrders.SauceType = [];
+    sendOrders.CheeseType = [];
+    sendOrders.Toppings = [];
+
     $("#addressList").show();
-    $("#addressListNew").show();
+    //$("#addressListNew").show();
 
     $("#step6Page").hide();
     $("#step7Page").hide();
