@@ -74,7 +74,7 @@
 
 
 <!--Display the user's delivery address(es) -->
-<h1 id="addressHeading">Select the delivery address</h1><br/>
+<h1 id="addressHeading"></h1><br/>
 <div id="addressList"></div>
 <div id="addressListNew"></div>
 
