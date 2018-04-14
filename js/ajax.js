@@ -408,6 +408,21 @@ function completeIncludeCurrent() {
     }
 }
 
+// redirect user to initial page and discard all pizzas in the current order
+function cancel() {
+    var i = 0;
+    while (sendOrders.PizzaType[i]) {
+        sendOrders.PizzaType.pop();
+        sendOrders.Size.pop();
+        sendOrders.DoughType.pop();
+        sendOrders.SauceType.pop();
+        sendOrders.CheeseType.pop();
+        sendOrders.Toppings.pop();
+        i++;
+    }
+    window.location.href = 'index.php';
+}
+
 function completeOrder() {
     $("#step6Page").hide();
     $("#step7Page").show();
