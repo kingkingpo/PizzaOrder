@@ -241,7 +241,12 @@ $(document).ready(function() {
 });
 
 
+function preventZoreOrder(){
 
+}
+$.post("getUserInfo.php", $(this).serialize(),
+            displayUserAddress);
+        event.preventDefault();
 
 
 
@@ -344,40 +349,48 @@ function discardCurrentAndAddPizza() {
 }
 
 function completNotIncludeCurrent() {
-
-    //discard current pizza
-    sendOrders.PizzaType.pop();
-    sendOrders.Size.pop();
-    sendOrders.DoughType.pop();
-    sendOrders.SauceType.pop();
-    sendOrders.CheeseType.pop();
-    sendOrders.Toppings.pop();
-
-    $("#step5Page").hide();
-    $("#step6Page").show();
-
-    $("#finalAddress").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th></tr>");
-    $("#finalAddress").append(
-        "<tr><td>" + sendOrders.DeliveryStreetAddress +
-        "</td><td>" + sendOrders.UnitNum +
-        "</td><td>" + sendOrders.DeliveryCity +
-        "</td><td>" + sendOrders.DeliveryProvince +
-        "</td><td>" + sendOrders.DeliveryPostCode +
-        "</td></tr>"
-    );
-    var i = 0;
-    $("#finalPizzaTable").html("<tr><th></th><th>Pizza Name</th><th>Size</th><th>Dough Type</th><th>Sauce Type</th><th>Cheese Type</th><th>Topping</th></tr>");
-    while (sendOrders.PizzaType[i]) {
-        $("#finalPizzaTable").append(
-            "<tr><td>" + (i + 1) + "</td><td>" + sendOrders.PizzaType[i] +
-            "</td><td>" + sendOrders.Size[i] +
-            "</td><td>" + sendOrders.DoughType[i] +
-            "</td><td>" + sendOrders.SauceType[i] +
-            "</td><td>" + sendOrders.CheeseType[i] +
-            "</td><td>" + sendOrders.Toppings[i] + "</td></tr>"
-        );
-        i++;
-    }
+	var emptyPizzaCheck=sendOrders.PizzaType[1];
+	if(typeof emptyPizzaCheck!== 'undefined' )
+	{
+		//discard current pizza
+		sendOrders.PizzaType.pop();
+		sendOrders.Size.pop();
+		sendOrders.DoughType.pop();
+		sendOrders.SauceType.pop();
+		sendOrders.CheeseType.pop();
+		sendOrders.Toppings.pop();
+	
+		$("#step5Page").hide();
+		$("#step6Page").show();
+	
+		$("#finalAddress").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th></tr>");
+		$("#finalAddress").append(
+			"<tr><td>" + sendOrders.DeliveryStreetAddress +
+			"</td><td>" + sendOrders.UnitNum +
+			"</td><td>" + sendOrders.DeliveryCity +
+			"</td><td>" + sendOrders.DeliveryProvince +
+			"</td><td>" + sendOrders.DeliveryPostCode +
+			"</td></tr>"
+		);
+		var i = 0;
+		$("#finalPizzaTable").html("<tr><th></th><th>Pizza Name</th><th>Size</th><th>Dough Type</th><th>Sauce Type</th><th>Cheese Type</th><th>Topping</th></tr>");
+		while (sendOrders.PizzaType[i]) {
+			$("#finalPizzaTable").append(
+				"<tr><td>" + (i + 1) + "</td><td>" + sendOrders.PizzaType[i] +
+				"</td><td>" + sendOrders.Size[i] +
+				"</td><td>" + sendOrders.DoughType[i] +
+				"</td><td>" + sendOrders.SauceType[i] +
+				"</td><td>" + sendOrders.CheeseType[i] +
+				"</td><td>" + sendOrders.Toppings[i] + "</td></tr>"
+			);
+			i++;
+		}
+	}
+	else
+	{
+		alert("You can't order nothing!");
+	}
+    
 }
 
 function completeIncludeCurrent() {
