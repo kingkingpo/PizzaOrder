@@ -75,7 +75,7 @@ $(document).ready(function() {
                     $("#addressList").html("<table id=\"addressTable\" ></table>");
                 }
 
-                $("#addressHeading").show();
+                $("#addressHeading").html("Select the delivery address");
 
                 addresses(response);
 
