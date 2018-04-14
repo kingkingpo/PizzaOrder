@@ -28,7 +28,6 @@ $(document).ready(function() {
     $("#saveUserInfo").hide();
     $("#btnAddAddress").hide();
     $("#newAddressForm").hide();
-    $("#addressHeading").hide();
 
     //**********************************************
     // LOG IN **************************************
@@ -162,6 +161,7 @@ $(document).ready(function() {
     //**********************************************
     $("#btnAddAddress").click(function() {
         $("#newAddressForm").show();
+        $("#addressHeading").html("");
     });
 
     // When the user clicks 'save a new address' button,
@@ -255,7 +255,7 @@ function chooseAddress(row) {
     $("#addressListNew").hide();
     $("#newAddressForm").hide();
     $("#choosePizza").show();
-    $("#addressHeading").hide();
+    $("#addressHeading").html("");
 
 }
 
@@ -482,6 +482,7 @@ function placeAnotherOrder() {
     sendOrders.CheeseType = [];
     sendOrders.Toppings = [];
 
+    $("#addressHeading").html("Select the delivery address");
     $("#addressList").show();
     //$("#addressListNew").show();
 
