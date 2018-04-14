@@ -16,7 +16,6 @@ body {
     padding: 15px;
 }
 
-
 /* 
 header {
     height: 40px;
@@ -170,8 +169,7 @@ table {
     margin: 2% 0;
 }
 
-.BtNext,
-BtBack {
+.BtNext {
     display: inline-block;
     border-radius: 4px;
     background-color: #337ab7;
@@ -189,12 +187,7 @@ BtBack {
     background-color: #286090;
 }
 
-.BtBack:hover {
-    background-color: #286090;
-}
-
-.BtNext span,
-.BtBack span {
+.BtNext span {
     cursor: pointer;
     display: inline-block;
     position: relative;
@@ -203,15 +196,6 @@ BtBack {
 
 .BtNext span:after {
     content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-}
-
-.BtBack span:after {
-    content: '\00ab';
     position: absolute;
     opacity: 0;
     top: 0;
@@ -228,16 +212,8 @@ BtBack {
     right: 0;
 }
 
-.BtBack:hover span {
-    padding-right: 25px;
-}
-
-.BtBack:hover span:after {
-    opacity: 1;
-    right: 0;
-}
-
-.BtNextLong {
+.BtNextLong,
+.BtBack {
     display: inline-block;
     border-radius: 4px;
     background-color: #337ab7;
@@ -255,7 +231,12 @@ BtBack {
     background-color: #286090;
 }
 
-.BtNextLong span {
+.BtBack:hover {
+    background-color: #286090;
+}
+
+.BtNextLong span,
+.BtBack span {
     cursor: pointer;
     display: inline-block;
     position: relative;
@@ -271,11 +252,29 @@ BtBack {
     transition: 0.5s;
 }
 
+.BtBack span:after {
+    content: '\00ab';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
 .BtNextLong:hover span {
     padding-right: 25px;
 }
 
 .BtNextLong:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.BtBack:hover span {
+    padding-right: 25px;
+}
+
+.BtBack:hover span:after {
     opacity: 1;
     right: 0;
 }

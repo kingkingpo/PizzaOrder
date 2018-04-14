@@ -200,14 +200,14 @@
 <table id="finalAddress" ></table>
 <table id="finalPizzaTable" ></table>
 </br><button class='BtBack' type='button' onclick='()' ><span>공사중 Cancel</span> </button>
-</br><button class='BtNext' type='button' onclick='completeOrder()' ><span>Order</span></button>
+</br><button class='BtNextLong' type='button' onclick='completeOrder()' ><span>Order</span></button>
 </div>
 
 <div id="step7Page">
 <h1 id="status"></h1>
 <h1 id="orderNumber"></h1>
 <h5 id="estimatedTime"></h5>
-</br><button class='BtBack' type='button' onclick='completeOrder()' > <span>공사중 place another order</span></button>
+</br><button class='BtBack' type='button' onclick='placeAnotherOrder()' ><span>공사중 place another order</span></button>
 </div>
 
 </div> <!-- end #wrap-Login-->
