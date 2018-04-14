@@ -1,4 +1,20 @@
-<?php session_start(); ?>
+<?php
+
+/*
+  * File name:    header.php
+  *
+  * Purpose:      Contains common HTML header part in one file
+  *               in order to add the header to new pages easily           
+  *
+  * Description:  Common HTML header part includes:
+  *               - meta tags
+  *               - links to CSS and JavaScript files
+  *               - navigation bar
+  */
+
+session_start();
+
+?>
 
 <!doctype html>
 

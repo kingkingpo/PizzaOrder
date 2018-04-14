@@ -1,11 +1,25 @@
 <?php 
 
 /*
- * Course:          INFO  - LAMP 2
- * Project:         Pizza Order
- * Submission:      2018-April-13
+ * Course:          INFO 5094 LAMP 2
+ * Project:         Pizza Order Web Site using AJAX
+ * Submission:      2018-April-14
+ * 
  * Group Members:   
+ *                  Hyeonguk Shin
+ *                  Minah Lee
+ *                  Joohyun Hwang
+ *                  Yeonsil Choi
  */
+
+
+ /*
+  * File name:     index.php
+  * Purpose:       Provides the following:
+  *                - a welcome message
+  *                - instructions on how to use the site.
+  *                - a button to begin the ordering process                
+  */
 
 require_once('initialize.php'); ?>
 
