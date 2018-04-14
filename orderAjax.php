@@ -16,7 +16,7 @@ disconnect_db($db_conn);
 
 
 function saveOrders($db_conn){
-    $qry="INSERT INTO Orders SET CustId=" .$_SESSION["CustId"]  ." , DeliveryStreetAddress='" .$_REQUEST['DeliveryStreetAddress'] 
+    $qry="INSERT INTO Orders SET CustId=" .$_REQUEST["CustId"]  ." , DeliveryStreetAddress='" .$_REQUEST['DeliveryStreetAddress'] 
     ."', DeliveryUnitNum='" .$_REQUEST['UnitNum'] ."', DeliveryCity='" .$_REQUEST['DeliveryCity'] 
     ."', DeliveryProvince='" .$_REQUEST['DeliveryProvince'] ."', DeliveryPostCode='" .$_REQUEST['DeliveryPostCode'] ."';"; 
     

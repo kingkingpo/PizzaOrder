@@ -165,7 +165,7 @@
   <option value="cheddar">Cheddar</option>
   <option value="parmesan">Parmesan</option>
 </select></br>
-<button type='button' onclick='choosePizza()' >Next</button>
+<button class='BtNextLong' type='button' onclick='choosePizza()' ><span>Next</span></button>
 </div>
 
 <!-- Toppings -->
@@ -182,32 +182,32 @@
   <input type="checkbox" id="GreenPeppers" value="GreenPeppers">Green Peppers<br>
   <input type="checkbox" id="Spinach" value="Spinach">Spinach<br>
   
-  <button type='button' onclick='chooseTopping()' >Next</button>
+  <button class='BtNextLong' type='button' onclick='chooseTopping()' ><span>Next</span></button>
 </div>
 
 <div id="step5Page">
-<table id="pizzaTable" border="1">
+<table id="pizzaTable" >
 </table>
 
-  <button type='button' onclick='completeIncludeCurrent()' >Complete the order, including the current pizza and any other pizzas already added to the order</button>
-  </br></br><button type='button' onclick='completNotIncludeCurrent()' >Complete the order, but do not include the current pizza</button>
-  </br></br><button type='button' onclick='addPizza()' >Add another pizza to the order</button>
-  </br></br><button type='button' onclick='discardCurrentAndAddPizza()' >Discard the current pizza and add another pizza to the order </button>
-  </br></br><button type='button' onclick='()' >공사중 Cancel the order </button>
+  <button class='BtFinal' type='button' onclick='completeIncludeCurrent()' >Complete the order, including the current pizza and any other pizzas already added to the order</button>
+  </br></br><button class='BtFinal' type='button' onclick='completNotIncludeCurrent()' >Complete the order, but do not include the current pizza</button>
+  </br></br><button class='BtFinal' type='button' onclick='addPizza()' >Add another pizza to the order</button>
+  </br></br><button class='BtFinal' type='button' onclick='discardCurrentAndAddPizza()' >Discard the current pizza and add another pizza to the order </button>
+  </br></br><button class='BtFinal' type='button' onclick='cancel()' >Cancel the order </button>
 </div>
 
 <div id="step6Page">
-<table id="finalAddress" border="1"></table>
-<table id="finalPizzaTable" border="1"></table>
-</br><button type='button' onclick='()' >공사중 Cancel </button>
-</br><button type='button' onclick='completeOrder()' >Order</button>
+<table id="finalAddress" ></table>
+<table id="finalPizzaTable" ></table>
+</br><button class='BtBack' type='button' onclick='()' ><span>공사중 Cancel</span> </button>
+</br><button class='BtNextLong' type='button' onclick='completeOrder()' ><span>Order</span></button>
 </div>
 
 <div id="step7Page">
 <h1 id="status"></h1>
 <h1 id="orderNumber"></h1>
 <h5 id="estimatedTime"></h5>
-</br><button type='button' onclick='completeOrder()' > 공사중 place another order</button>
+</br><button class='BtBack' type='button' onclick='placeAnotherOrder()' ><span>공사중 place another order</span></button>
 </div>
 
 </div> <!-- end #wrap-Login-->

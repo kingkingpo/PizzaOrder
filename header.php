@@ -17,7 +17,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     <script src="./js/ajax.js"></script>
-    <script src="./js/orderAjax.js"></script>
     <link rel="stylesheet" media="all" href="./css/style.css" />
   </head>
 
@@ -33,9 +32,9 @@
           <li><a href="#">Menu</a></li>
           <li><a href="#">Deals</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <!-- <ul class="nav navbar-nav navbar-right">
           <li id="menuLogin"><a href="./order.php">
           <span class="glyphicon glyphicon-log-in"></span> Log in</a></li>
-        </ul>
+        </ul> -->
       </div>
     </nav>
