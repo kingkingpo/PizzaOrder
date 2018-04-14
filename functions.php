@@ -32,6 +32,7 @@ function getUserInfo() {
         // Sanitize user inputs
         $email = $db_conn->real_escape_string($_POST['email']);
 
+        //*****************0409 테스트 */
         $userId = "SELECT CustId FROM customers WHERE Email ='".$email."'";
         $resultId = $db_conn->query($userId);
 
@@ -41,33 +42,33 @@ function getUserInfo() {
                 $custId = $rowId['CustId'];
                 $_SESSION["CustId"] = $custId;
             }
-        }
-
-        // Get exising delivery addresses
-        $sql = "SELECT DISTINCT c.Email, o.DeliveryStreetAddress, o.DeliveryUnitNum, o.DeliveryCity, o.DeliveryProvince, o.DeliveryPostCode
-                FROM customers c
-                INNER JOIN orders o
-                ON c.CustId = o.CustId
-                WHERE email='" .$email."'";
         
-        $result = $db_conn->query($sql);
+            // Get exising delivery addresses
+            $sql = "SELECT DISTINCT c.Email, o.DeliveryStreetAddress, o.DeliveryUnitNum, o.DeliveryCity, o.DeliveryProvince, o.DeliveryPostCode
+                    FROM customers c
+                    INNER JOIN orders o
+                    ON c.CustId = o.CustId
+                    WHERE email='" .$email."'";
+            
+            $result = $db_conn->query($sql);
 
-        if ($result->num_rows > 0){
+            if ($result->num_rows > 0){
 
-            $customers = array("status" => "OK");
-            $customers['customers'] = array();
+                $customers = array("status" => "OK");
+                $customers['customers'] = array();
 
-            while ($row = $result->fetch_assoc()){
+                while ($row = $result->fetch_assoc()){
 
-                array_push($customers['customers'], $row);
+                    array_push($customers['customers'], $row);
 
-            } //End While-loop
+                } //End While-loop
 
-            echo json_encode($customers);
-        
-        } else {
-            // if no result, send out an error message
-            echo '{ "status": "No email found" }';
+                echo json_encode($customers);
+            
+            } else {
+                // if no result, send out an error message
+                echo '{ "status": "No email found" }';
+            }
         }
 
         // disconnect DB
