@@ -50,14 +50,6 @@ function getUserInfo() {
                 ON c.CustId = o.CustId
                 WHERE email='" .$email."'";
   
-        
-            // Get exising delivery addresses
-            $sql = "SELECT DISTINCT c.Email, o.DeliveryStreetAddress, o.DeliveryUnitNum, o.DeliveryCity, o.DeliveryProvince, o.DeliveryPostCode
-                    FROM customers c
-                    INNER JOIN orders o
-                    ON c.CustId = o.CustId
-                    WHERE email='" .$email."'";
-            
             $result = $db_conn->query($sql);
 
             if ($result->num_rows > 0){

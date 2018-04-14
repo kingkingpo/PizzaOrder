@@ -241,12 +241,12 @@ $(document).ready(function() {
 });
 
 
-function preventZoreOrder(){
+/* function preventZoreOrder(){
 
 }
 $.post("getUserInfo.php", $(this).serialize(),
             displayUserAddress);
-        event.preventDefault();
+        event.preventDefault(); */
 
 
 
