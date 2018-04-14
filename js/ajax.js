@@ -222,7 +222,7 @@ $(document).ready(function() {
                     "</td><td id='DeliveryCity_" + r + "'>" + response.newAddress[r].DeliveryCity +
                     "</td><td id='DeliveryProvince_" + r + "'>" + response.newAddress[r].DeliveryProvince +
                     "</td><td id='DeliveryPostCode_" + r + "'>" + response.newAddress[r].DeliveryPostCode +
-                    "</td><td><button id='submitAddress' type='button' onclick='chooseAddress(" + r + ")'>Next</button></td></tr>"
+                    "</td><td><button id='submitAddress' class='BtNext' type='button' onclick='chooseAddress(" + r + ")'>Next</button></td></tr>"
                 );
             }
 
@@ -344,6 +344,7 @@ function discardCurrentAndAddPizza() {
 }
 
 function completNotIncludeCurrent() {
+
     //discard current pizza
     sendOrders.PizzaType.pop();
     sendOrders.Size.pop();
@@ -377,8 +378,6 @@ function completNotIncludeCurrent() {
         );
         i++;
     }
-
-
 }
 
 function completeIncludeCurrent() {

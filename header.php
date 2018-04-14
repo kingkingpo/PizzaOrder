@@ -17,7 +17,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
     <script src="./js/ajax.js"></script>
-    <script src="./js/orderAjax.js"></script>
     <link rel="stylesheet" media="all" href="./css/style.css" />
   </head>
 
