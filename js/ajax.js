@@ -263,6 +263,7 @@ function chooseAddress(row) {
     $("#addressList").hide();
     $("#addressListNew").hide();
     $("#choosePizza").show();
+    $("#newAddressForm").hide();
 
 
 }
@@ -431,7 +432,7 @@ function cancel() {
         sendOrders.SauceType.pop();
         sendOrders.CheeseType.pop();
         sendOrders.Toppings.pop();
-        if(sendOrders.PizzaType.length == 1) {
+        if (sendOrders.PizzaType.length == 1) {
             sendOrders.PizzaType.shift();
             sendOrders.Size.shift();
             sendOrders.DoughType.shift();
