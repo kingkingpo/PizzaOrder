@@ -174,14 +174,25 @@ $(document).ready(function() {
     // load data from the server using a HTTP POST request
     $("#newAddressForm").submit(function(event) {
 
-        var emailNew = $("#email").val();
+/*         var emailNew = $("#email").val();
         var unitNumNew = $("#unitNumNew").val();
         var streetNew = $("#streetNew").val();
         var cityNew = $("#cityNew").val();
         var provinceNew = $("#provinceNew").val();
         var postalCodeNew = $("#postalCodeNew").val();
+		 */
 
-        var userInfoNew = {
+		sendOrders.UnitNum=$("#unitNumNew").val();
+		sendOrders.DeliveryStreetAddress= $("#streetNew").val();
+		sendOrders.DeliveryCity=$("#cityNew").val();
+		sendOrders.DeliveryProvince= $("#provinceNew").val();
+		sendOrders.DeliveryPostCode= $("#postalCodeNew").val();
+
+		$("#btnAddAddress").hide();
+		$("#addressList").hide();
+		$("#newAddressForm").hide();
+		$("#choosePizza").show();
+/*         var userInfoNew = {
             "emailNew": emailNew,
             "unitNumNew": unitNumNew,
             "streetNew": streetNew,
@@ -190,14 +201,15 @@ $(document).ready(function() {
             "postalCodeNew": postalCodeNew
         }
 
-        $.post("addNewAddress.php", userInfoNew, displayNewAddress);
+		$.post("addNewAddress.php", userInfoNew, displayNewAddress);
+		*/
         event.preventDefault();
-
+ 
     });
 
 
 
-    var displayNewAddress = function(response) {
+   /*  var displayNewAddress = function(response) {
 
         if (response.status == "NewAddressOK") {
 
@@ -229,7 +241,7 @@ $(document).ready(function() {
             console.log(response);
         }
 
-    }
+    } */
 
     $.get("getUserInfo.php", displayUserAddress);
 

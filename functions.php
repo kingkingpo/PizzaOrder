@@ -150,7 +150,7 @@ function saveUserInfo() {
 
 
 // SAVE NEW ADDRESS
-function addNewAddress(){
+/* function addNewAddress(){
 
     if ( isset($_POST['emailNew']) && isset($_POST['streetNew']) && isset($_POST['unitNumNew']) 
         && isset($_POST['cityNew']) && isset($_POST['provinceNew']) && isset($_POST['postalCodeNew'])) {
@@ -239,6 +239,6 @@ function addNewAddress(){
     }
 
 
-}
+} */
 
 ?>
