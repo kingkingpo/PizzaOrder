@@ -1,4 +1,22 @@
-<?php require_once('initialize.php'); ?>
+<?php
+
+/*
+  * File name:     order.php
+  * Purpose:       Consists of the following order steps:
+  *                	step 1) Login with a user's email address
+  *                	step 2) User validation
+  *                	step 3) Pizza selection (pizza size; dough, sauce, and cheese type)
+  *                	step 4) Topping selection
+  *                	step 5) Current order summary
+  *                	step 6) Summary of the entire order
+  *                	step 7) Order Completed
+  *
+  * Notes:			This page is updated without reloading the entire page
+  *					as it uses AJAX funcitonality
+  *					for all data exchange btween the browser and web server.
+  */
+
+require_once('initialize.php'); ?>
 
 <?php include('header.php'); ?>
 
