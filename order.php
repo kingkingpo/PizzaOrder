@@ -41,7 +41,7 @@
 		<div class="form-group row">
 			<label for="unitNum" class="col-sm-3 col-form-label">Unit Number</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="unitNum" name="unitNum" required>
+				<input type="text" class="form-control" id="unitNum" name="unitNum">
 			</div>
 		</div>
 		<div class="form-group row">
@@ -89,7 +89,7 @@
 		<div class="form-group row">
 			<label for="unitNum" class="col-sm-3 col-form-label">Unit Number</label>
 			<div class="col-sm-9">
-				<input type="text" class="form-control" id="unitNumNew" name="unitNumNew" required>
+				<input type="text" class="form-control" id="unitNumNew" name="unitNumNew">
 			</div>
 		</div>
 		<div class="form-group row">
@@ -187,6 +187,7 @@
 </div>
 
 <div id="step5Page">
+<h1 id="orderSummary"></h1>
 <table id="pizzaTable" >
 </table>
 
@@ -198,6 +199,7 @@
 </div>
 
 <div id="step6Page">
+<h1 id="orderSummaryFinal"></h1>
 <table id="finalAddress" ></table>
 <table id="finalPizzaTable" ></table>
 </br><button class='BtBack' type='button' onclick='cancel()' ><span>Cancel the order</span> </button>

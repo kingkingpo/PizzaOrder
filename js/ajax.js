@@ -73,28 +73,15 @@ $(document).ready(function() {
                 $("#menuLogin").text("Hello " + userEmail + "!");
 
                 if ((response.status == "OK") && ($("#div1").html() == "Please log-in first")) {
-                    $("#addressList").html("<table id=\"table1\" ></table>");
+                    $("#addressList").html("<table id=\"addressTable\" ></table>");
                 }
 
                 $("#addressHeading").show();
-                $("#table1").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
 
-                for (r in response.customers) {
+                addresses(response);
 
-                    $("#table1").append(
-
-                        "<tr><td id='DeliveryStreetAddress_" + r + "'>" + response.customers[r].DeliveryStreetAddress +
-                        "</td><td id='UnitNum_" + r + "'>" + response.customers[r].DeliveryUnitNum +
-                        "</td><td id='DeliveryCity_" + r + "'>" + response.customers[r].DeliveryCity +
-                        "</td><td id='DeliveryProvince_" + r + "'>" + response.customers[r].DeliveryProvince +
-                        "</td><td id='DeliveryPostCode_" + r + "'>" + response.customers[r].DeliveryPostCode +
-                        "</td><td><button class='BtNext' id='submitAddress' type='button' onclick='chooseAddress(" + r + ")'><span>Next</span></button></td></tr>"
-                    );
-
-                    $("#div1").hide();
-                    $("#btnAddAddress").show();
-
-                }
+                $("#div1").hide();
+                $("#btnAddAddress").show();
             }
 
         } //end displayUserAddress()
@@ -147,13 +134,13 @@ $(document).ready(function() {
             sendOrders.CustId = response.customers[0].CustId;
             $("#menuLogin").text("Hello " + userEmail + "!");
 
-            $("#addressList").html("<table id=\"table2\" ></table>");
+            $("#addressList").html("<table id=\"addressTable\" ></table>");
 
-            $("#table2").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
+            $("#addressTable").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
 
             for (r in response.customers) {
 
-                $("#table2").append(
+                $("#addressTable").append(
 
                     "<tr><td id='DeliveryStreetAddress_" + r + "'>" + response.customers[r].StreetAddress +
                     "</td><td id='UnitNum_" + r + "'>" + response.customers[r].UnitNum +
@@ -249,11 +236,6 @@ $(document).ready(function() {
          }
 
      } */
-
-    $.get("getUserInfo.php", displayUserAddress);
-
-
-
 
 
 
@@ -355,7 +337,7 @@ function chooseTopping() {
 //This function is for storing topping info into sendOrders object  
 //and show step5Page
 function showCurrentOrder() {
-
+    $("#orderSummary").html("Order Summary");
     var lastIndex = sendOrders.PizzaType.length - 1;
     $("#pizzaTable").html("<tr><th>Pizza Name</th><th>Size</th><th>Dough Type</th><th>Sauce Type</th><th>Cheese Type</th><th>Topping</th></tr>");
 
@@ -410,6 +392,7 @@ function completNotIncludeCurrent() {
 
         $("#step5Page").hide();
         $("#step6Page").show();
+        $("#orderSummaryFinal").html("Order Summary including Delivery Information");
 
         $("#finalAddress").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th></tr>");
         $("#finalAddress").append(
@@ -444,6 +427,7 @@ function completNotIncludeCurrent() {
 function completeIncludeCurrent() {
     $("#step5Page").hide();
     $("#step6Page").show();
+    $("#orderSummaryFinal").html("Order Summary including Delivery Information");
 
     $("#finalAddress").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th></tr>");
     $("#finalAddress").append(
@@ -503,6 +487,9 @@ function placeAnotherOrder() {
 
     $("#step6Page").hide();
     $("#step7Page").hide();
+
+    $.post("getAddresses.php", sendOrders, showAddresses);
+
 }
 
 
@@ -526,4 +513,37 @@ var order = function(response) {
 
     console.log(response);
 
+}
+
+//callback function for placeAnotherOrder button
+var showAddresses = function(response) {
+
+    if (response.status == "OK") {
+        addresses(response);
+    } else if (response.status == "No result." || response.status == "CustId is not found.") {
+        console.log("eroor occured");
+    }
+    console.log(response);
+
+}
+
+//address list from callback function
+function addresses(response) {
+
+    $("#addressTable").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
+
+    for (r in response.customers) {
+
+        $("#addressTable").append(
+
+            "<tr><td id='DeliveryStreetAddress_" + r + "'>" + response.customers[r].DeliveryStreetAddress +
+            "</td><td id='UnitNum_" + r + "'>" + response.customers[r].DeliveryUnitNum +
+            "</td><td id='DeliveryCity_" + r + "'>" + response.customers[r].DeliveryCity +
+            "</td><td id='DeliveryProvince_" + r + "'>" + response.customers[r].DeliveryProvince +
+            "</td><td id='DeliveryPostCode_" + r + "'>" + response.customers[r].DeliveryPostCode +
+            "</td><td><button class='BtNext' id='submitAddress' type='button' onclick='chooseAddress(" + r + ")'><span>Next</span></button></td></tr>"
+        );
+
+    }
+    $("#btnAddAddress").show();
 }
