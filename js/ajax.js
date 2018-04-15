@@ -259,7 +259,7 @@ function choosePizza() {
 //and show step5Page
 function chooseTopping() {
 	//make topping checkbox false
-	$(".single-checkbox").prop("checked", false);
+	//$(".single-checkbox").prop("checked", false);
 
     var toppings = "";
     toppings += (document.getElementById("GreenOlives").checked == true) ? "GreenOlives, " : "";
