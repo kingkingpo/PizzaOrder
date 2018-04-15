@@ -16,7 +16,7 @@ require_once ('initialize.php');
 /*
  * Function:    getAddresses()
  * Purpose:     Retrieves the user's delivery addresses from DB, and sends them to the browser
- * Return:      an array of the user's addersses,
+ * Return:      Returns all of the user's addersses,
  *              or an error message in case any error occurs
  */
 getAddresses();

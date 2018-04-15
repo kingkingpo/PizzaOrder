@@ -2,7 +2,7 @@
 
 /*
  * File name:     functions.php
- * Purpose:       Keeps functions on one file to maintain the codes easily
+ * Purpose:       Keeps functions in one file to maintain the codes easily
  */
 
 
@@ -25,9 +25,9 @@ function disconnect_db($db_conn){
 
 /*
  * Function:    getUserInfo()
- * Purpose:     Sends the user's delivery addresses if his/her email already exists in the DB
- * Return:      an array of the user's addersses which are converted into JSON,
- *              or an error message saying "No email found"
+ * Purpose:     User validation on server side
+ * Return:      If the user's email already exists in DB, returns an array of the user's addersses.
+ *              If not, sends an error message saying "No email found"
  */
 function getUserInfo() {
 
@@ -89,8 +89,8 @@ function getUserInfo() {
 
 /*
  * Function:    saveUserInfo()
- * Purpose:     Save new user information in DB
- * Return:      an array of the user's addersses including the newly added address,
+ * Purpose:     Save new user's information (such as name and address) in DB
+ * Return:      Returns all of the user's addersses including the newly added address,
  *              or an error message in case any error occurs
  */
 function saveUserInfo() {
@@ -167,7 +167,7 @@ function saveUserInfo() {
 /*
  * Function:    getAddresses()
  * Purpose:     Retrieves the user's delivery addresses from DB, and sends them to the browser
- * Return:      an array of the user's addersses which are converted into JSON,
+ * Return:      Returns an array of the user's addersses which are converted into JSON,
  *              or an error message in case any error occurs
  */
 function getAddresses(){
