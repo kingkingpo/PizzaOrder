@@ -1,3 +1,12 @@
+/*
+ *  File name:      ajax.js
+ *  Description:    Handles the following tasks (but not limited to):
+ *                  - HTML/DOM manipulation
+ *                  - AJAX
+ *   
+ */
+
+
 //customer id, address and pizza information will be stored in this object
 //and these will be sent to orderAjax.php to save in DB
 var sendOrders = {
@@ -18,7 +27,6 @@ var sendOrders = {
 
 $(document).ready(function() {
 
-
     // hide everything execpt for the email form
     $("#choosePizza").hide();
     $("#chooseTopping").hide();
@@ -29,9 +37,8 @@ $(document).ready(function() {
     $("#btnAddAddress").hide();
     $("#newAddressForm").hide();
 
-    //**********************************************
+
     // LOG IN **************************************
-    //**********************************************
     // When the user clicks Login button,
     // load data from the server using a HTTP POST request
     $("#emailForm").submit(function(event) {
@@ -85,9 +92,8 @@ $(document).ready(function() {
 
         } //end displayUserAddress()
 
-    //**********************************************
+
     // SAVE NEW USER INFORMATION********************
-    //**********************************************
     // When the user clicks Save button,
     // load data from the server using a HTTP POST request
     $("#saveUserInfo").submit(function(event) {
@@ -168,14 +174,7 @@ $(document).ready(function() {
     // store address info into sendOrders object
     $("#newAddressForm").submit(function(event) {
 
-        /*         var emailNew = $("#email").val();
-                var unitNumNew = $("#unitNumNew").val();
-                var streetNew = $("#streetNew").val();
-                var cityNew = $("#cityNew").val();
-                var provinceNew = $("#provinceNew").val();
-                var postalCodeNew = $("#postalCodeNew").val();
-        		 */
-
+        
         sendOrders.UnitNum = $("#unitNumNew").val();
         sendOrders.DeliveryStreetAddress = $("#streetNew").val();
         sendOrders.DeliveryCity = $("#cityNew").val();
@@ -186,57 +185,10 @@ $(document).ready(function() {
         $("#addressList").hide();
         $("#newAddressForm").hide();
         $("#choosePizza").show();
-        /*         var userInfoNew = {
-                    "emailNew": emailNew,
-                    "unitNumNew": unitNumNew,
-                    "streetNew": streetNew,
-                    "cityNew": cityNew,
-                    "provinceNew": provinceNew,
-                    "postalCodeNew": postalCodeNew
-                }
-
-        		$.post("addNewAddress.php", userInfoNew, displayNewAddress);
-        		*/
+       
         event.preventDefault();
 
     });
-
-
-
-    /*  var displayNewAddress = function(response) {
-
-         if (response.status == "NewAddressOK") {
-
-             console.log("ADD NEW success");
-             $("#plzLogIn").hide();
-             $("#btnLogin").hide();
-             $("#saveUserInfo").hide();
-             $("#btnAddAddress").hide();
-             $("#newAddressForm").hide();
-             $("#div1").hide();
-             $("#addressList").hide();
-
-             $("#addressListNew").html("<table id=\"tableNew\" ></table>");
-
-             $("#tableNew").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
-
-             for (r in response.newAddress) {
-                 $("#tableNew").append(
-
-                     "<tr><td id='DeliveryStreetAddress_" + r + "'>" + response.newAddress[r].DeliveryStreetAddress +
-                     "</td><td id='UnitNum_" + r + "'>" + response.newAddress[r].DeliveryUnitNum +
-                     "</td><td id='DeliveryCity_" + r + "'>" + response.newAddress[r].DeliveryCity +
-                     "</td><td id='DeliveryProvince_" + r + "'>" + response.newAddress[r].DeliveryProvince +
-                     "</td><td id='DeliveryPostCode_" + r + "'>" + response.newAddress[r].DeliveryPostCode +
-                     "</td><td><button id='submitAddress' class='BtNext' type='button' onclick='chooseAddress(" + r + ")'>Next</button></td></tr>"
-                 );
-             }
-
-             console.log(response);
-         }
-
-     } */
-
 
 
 });

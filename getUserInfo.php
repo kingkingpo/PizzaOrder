@@ -20,9 +20,9 @@ require_once ('initialize.php');
 
 /*
  * Function:    getUserInfo()
- * Purpose:     Checks if the user's email already exists in the DB
- * Return:      Returns an array of the user's adderss which is converted into JSON,
- *              or an error message saying "No email found"
+ * Purpose:     User validation on Server Side
+ * Return:      If the user's email already exists in DB, returns an array of the user's addersses.
+ *              If not, sends an error message saying "No email found"
  */
 getUserInfo();
 

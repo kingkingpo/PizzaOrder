@@ -2,7 +2,7 @@
 
 /*
  * File name:     functions.php
- * Purpose:       Keeps functions in one file to maintain the codes easily
+ * Description:   Keeps functions in one file to maintain the codes easily
  */
 
 
