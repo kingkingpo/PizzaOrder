@@ -139,6 +139,8 @@ $(document).ready(function() {
             sendOrders.CustId = response.customers[0].CustId;
             $("#menuLogin").text("Hello " + userEmail + "!");
 
+            $("#addressHeading").html("Select the delivery address");
+
             $("#addressList").html("<table id=\"addressTable\" ></table>");
 
             $("#addressTable").html("<tr><th>Street Address</th><th>Unit Number</th><th>City</th><th>Province</th><th>PostCode</th><th>Select</th></tr>");
@@ -452,7 +454,7 @@ var order = function(response) {
     // alert(convertedEsTime);
     if (response.status == "succeed") {
         $("#status").html("Thank you!");
-        $("#orderNumber").html("order number: " + response.orderId);
+        $("#orderNumber").html("Order #: " + response.orderId);
         document.getElementById("estimatedTime").innerHTML = "Estimated delivery time: " + convertedEsTime;
 
     } else if (response.status == "failed") {
