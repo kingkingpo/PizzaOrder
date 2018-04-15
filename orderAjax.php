@@ -1,6 +1,15 @@
 <?php
+
+/*
+ * File name:     orderAjax.php
+ * Purpose:       Saves the user's order details in DB
+ *                
+ */
+
 session_start();
 header("Content-Type: application/json");
+
+// include a php file containing functions and DB credentials
 require_once ('initialize.php');
 
 $db_conn = connect_db();
