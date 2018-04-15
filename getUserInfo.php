@@ -13,7 +13,7 @@ session_start();
 header("Content-Type: application/json");
 
 
-// include a php file containing functions and constants required
+// include a php file containing functions and DB credentials
 require_once ('initialize.php');
 
 

@@ -21,7 +21,10 @@
   *                - a button to begin the ordering process                
   */
 
+  
+// include a php file containing functions and DB credentials
 require_once('initialize.php'); ?>
+
 
 <?php include('header.php'); ?>
 

@@ -522,7 +522,7 @@ var showAddresses = function(response) {
     if (response.status == "OK") {
         addresses(response);
     } else if (response.status == "No result." || response.status == "CustId is not found.") {
-        console.log("eroor occured");
+        console.log("An error occured");
     }
     console.log(response);
 

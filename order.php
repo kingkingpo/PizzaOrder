@@ -17,7 +17,10 @@
   *					for all data exchange btween the browser and web server.
   */
 
+
+// include a php file containing functions and DB credentials
 require_once('initialize.php'); ?>
+
 
 <?php include('header.php'); ?>
 

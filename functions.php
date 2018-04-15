@@ -17,6 +17,7 @@ function connect_db(){
         return $db_conn;
 }
 
+// Close connection to DB
 function disconnect_db($db_conn){
     $db_conn->close();
 }
@@ -26,7 +27,7 @@ function disconnect_db($db_conn){
  * Function:    getUserInfo()
  * Purpose:     Sends the user's delivery addresses if his/her email already exists in the DB
  * Return:      an array of the user's addersses which are converted into JSON,
- *              or an erro message saying "No email found"
+ *              or an error message saying "No email found"
  */
 function getUserInfo() {
 
@@ -42,7 +43,6 @@ function getUserInfo() {
         // Sanitize user inputs
         $email = $db_conn->real_escape_string($_POST['email']);
 
-        //*****************0409 테스트 */
         $userId = "SELECT CustId FROM customers WHERE Email ='".$email."'";
         $resultId = $db_conn->query($userId);
 
@@ -87,7 +87,12 @@ function getUserInfo() {
 } //end getUserInfo()
 
 
-// Save NEW USER data in DB
+/*
+ * Function:    saveUserInfo()
+ * Purpose:     Save new user information in DB
+ * Return:      an array of the user's addersses including the newly added address,
+ *              or an error message in case any error occurs
+ */
 function saveUserInfo() {
 
     if ( isset($_POST['fullName']) && isset($_POST['street']) && isset($_POST['unitNum']) 
@@ -158,7 +163,13 @@ function saveUserInfo() {
     }
 } // end saveUserInfo()
 
-//return address info into json format 
+
+/*
+ * Function:    getAddresses()
+ * Purpose:     Retrieves the user's delivery addresses from DB, and sends them to the browser
+ * Return:      an array of the user's addersses which are converted into JSON,
+ *              or an error message in case any error occurs
+ */
 function getAddresses(){
     
     if(isset($_REQUEST['CustId'])){
