@@ -177,7 +177,7 @@ $(document).ready(function() {
     // store address info into sendOrders object
     $("#newAddressForm").submit(function(event) {
 
-        
+
         sendOrders.UnitNum = $("#unitNumNew").val();
         sendOrders.DeliveryStreetAddress = $("#streetNew").val();
         sendOrders.DeliveryCity = $("#cityNew").val();
@@ -188,7 +188,7 @@ $(document).ready(function() {
         $("#addressList").hide();
         $("#newAddressForm").hide();
         $("#choosePizza").show();
-       
+
         event.preventDefault();
 
     });
@@ -230,27 +230,25 @@ function choosePizza() {
     sendOrders.CheeseType.push(cheeseType);
 
     $("#choosePizza").hide();
-	$("#chooseTopping").show();
-	
-	
-	
-    /* Topping number depends on Size  */
+    $("#chooseTopping").show();
 
-	$('input.single-checkbox').on('click', function(evt) {
-		var size1=$('#size').val();
-		if ($('.single-checkbox:checked').length > 3 && size1=="S") {
-			this.checked = false;
-			alert("You can choose three toppings");
-		}
-		else if ($('.single-checkbox:checked').length > 5 && size1 == "M") {
-			this.checked = false;
-			alert("You can choose five toppings");
-		}
-		else if($('.single-checkbox:checked').length > 7 && size1 == "L") {
-			this.checked = false;
-			alert("You can choose seven toppings");
-		} 
-	});
+
+
+    /* The number of toppings depending on the pizza size  */
+
+    $('input.single-checkbox').on('click', function(evt) {
+        var size1 = $('#size').val();
+        if ($('.single-checkbox:checked').length > 3 && size1 == "S") {
+            this.checked = false;
+            alert("Sorry, you can only choose 3 toppings!");
+        } else if ($('.single-checkbox:checked').length > 5 && size1 == "M") {
+            this.checked = false;
+            alert("Sorry, you can only choose 5 toppings!");
+        } else if ($('.single-checkbox:checked').length > 7 && size1 == "L") {
+            this.checked = false;
+            alert("Sorry, you can only choose 7 toppings!");
+        }
+    });
 
 
 
@@ -259,8 +257,6 @@ function choosePizza() {
 //This function is for storing topping info into sendOrders object  
 //and show step5Page
 function chooseTopping() {
-	//make topping checkbox false
-	//$(".single-checkbox").prop("checked", false);
 
     var toppings = "";
     toppings += (document.getElementById("GreenOlives").checked == true) ? "GreenOlives, " : "";
@@ -278,6 +274,9 @@ function chooseTopping() {
 
     toppings = toppings.substr(0, n - 2);
     sendOrders.Toppings.push(toppings);
+
+    //make topping checkbox false
+    $(".single-checkbox").prop("checked", false);
 
     $("#chooseTopping").hide();
     $("#step5Page").show();
