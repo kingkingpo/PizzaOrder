@@ -63,6 +63,7 @@ $(document).ready(function() {
             // console.log(response);
 
             if (response.status == "No email found") {
+                $("#div1").show();
                 $("#div1").html("No previous orders to list. Please input your delivery address.");
 
                 $("#saveUserInfo").show();
