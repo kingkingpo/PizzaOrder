@@ -232,7 +232,7 @@ require_once('initialize.php'); ?>
 <h1 id="status"></h1>
 <h1 id="orderNumber"></h1>
 <h5 id="estimatedTime"></h5>
-</br><button class='BtBack' type='button' onclick='placeAnotherOrder()' ><span>공사중 place another order</span></button>
+</br><button class='BtBack' type='button' onclick='placeAnotherOrder()' ><span>Place Another Order</span></button>
 </div>
 
 </div> <!-- end #wrap-Login-->
