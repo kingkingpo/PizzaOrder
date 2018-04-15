@@ -32,7 +32,7 @@ function saveOrders($db_conn){
     $DeliveryProvince = $db_conn->real_escape_string($_REQUEST['DeliveryProvince']);
     $DeliveryPostCode = $db_conn->real_escape_string($_REQUEST['DeliveryPostCode']);
 
-    $qry="INSERT INTO Orders SET CustId=" .$CustId  ." , DeliveryStreetAddress='" .$DeliveryStreetAddress 
+    $qry="INSERT INTO orders SET CustId=" .$CustId  ." , DeliveryStreetAddress='" .$DeliveryStreetAddress 
     ."', DeliveryUnitNum='" .$DeliveryUnitNum ."', DeliveryCity='" .$DeliveryCity 
     ."', DeliveryProvince='" .$DeliveryProvince ."', DeliveryPostCode='" .$DeliveryPostCode ."';"; 
     
@@ -65,7 +65,7 @@ function saveOrderDetails($db_conn,$orderId){
         $PizzaType = $db_conn->real_escape_string($_REQUEST['PizzaType'][$i]);
 
 
-        $qry="INSERT INTO Order_Details SET OrderId=" .$orderId ." , PizzaType='" .$PizzaType
+        $qry="INSERT INTO order_details SET OrderId=" .$orderId ." , PizzaType='" .$PizzaType
          ."', SizeType='" .$Size ."', DoughType='" .$DoughType 
          ."', SauceType='" .$SauceType ."', CheeseType='" .$CheeseType 
          ."', Toppings='" .$Toppings ."';"; 
