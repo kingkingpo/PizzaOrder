@@ -2,8 +2,7 @@
 
 /*
  * File name:     orderAjax.php
- * Purpose:       Saves the user's order details in DB
- *                
+ * Purpose:       Saves the user's order details in DB           
  */
 
 session_start();
