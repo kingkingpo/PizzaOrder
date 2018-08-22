@@ -2,7 +2,6 @@
 
 /*
  * File name:     saveUserInfo.php
- * 
  * Purpose:       Saves new user information (such as name and address) in DB
  *                
  */
