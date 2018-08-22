@@ -4,7 +4,6 @@
  * Course:          INFO 5094 LAMP 2
  * Project:         Pizza Order Web Site using AJAX
  * Submission:      2018-April-14
- * 
  * Group Members:   
  *                  Hyeonguk Shin
  *                  Minah Lee

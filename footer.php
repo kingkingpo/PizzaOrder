@@ -5,7 +5,6 @@
   *               in order to add the footer elements to new pages easily           
   *
   * Description:  This footer includes the copyright tag
-  *
   -->
 
 <footer class="footer customFooter">

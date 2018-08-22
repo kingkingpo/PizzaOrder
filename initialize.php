@@ -4,8 +4,7 @@
  * File name:     initialize.php
  * 
  * Purpose:       Keeps all DB credentials in one file
- *                to maintain them easily
- *                
+ *                to maintain them easily      
  */
 
 
