@@ -3,6 +3,7 @@
 /*
  * File name:     functions.php
  * Description:   Keeps functions in one file to maintain the codes easily
+ *
  */
 
 
