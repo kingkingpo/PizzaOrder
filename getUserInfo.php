@@ -2,7 +2,6 @@
 
 /*
  * File name:     getUserInfo.php
- * 
  * Purpose:       User Validation on Server Side
  * Description:   When the user clicks 'Login' button,
  *                checks if the email address entered by the user alraedy exists in DB.
