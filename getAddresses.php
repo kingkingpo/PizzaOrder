@@ -2,8 +2,7 @@
 
 /*
  * File name:     getAddresses.php
- * Purpose:       Retrieves the user's delivery addresses from DB
- *                
+ * Purpose:       Retrieves the user's delivery addresses from DB         
  */
 
 
