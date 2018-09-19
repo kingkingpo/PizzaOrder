@@ -2,7 +2,8 @@
 
 /*
  * File name:     orderAjax.php
- * Purpose:       Saves the user's order details in DB           
+ * Purpose:       Saves the user's order details in DB
+ *                
  */
 
 session_start();
@@ -31,11 +32,13 @@ function saveOrders($db_conn){
     $DeliveryProvince = $db_conn->real_escape_string($_REQUEST['DeliveryProvince']);
     $DeliveryPostCode = $db_conn->real_escape_string($_REQUEST['DeliveryPostCode']);
 
-    $qry="INSERT INTO orders SET CustId=" .$CustId  ." , DeliveryStreetAddress='" .$DeliveryStreetAddress 
-    ."', DeliveryUnitNum='" .$DeliveryUnitNum ."', DeliveryCity='" .$DeliveryCity 
-    ."', DeliveryProvince='" .$DeliveryProvince ."', DeliveryPostCode='" .$DeliveryPostCode ."';"; 
-    
-    $db_conn->query($qry);
+    $qry="INSERT INTO orders SET CustId= ? , DeliveryStreetAddress= ?, DeliveryUnitNum= ?,
+     DeliveryCity= ? , DeliveryProvince= ?, DeliveryPostCode= ?;"; 
+
+    $stmt = $db_conn->prepare($qry);
+    $stmt->bind_param("ssssss", $CustId, $DeliveryStreetAddress, $DeliveryUnitNum, $DeliveryCity, $DeliveryProvince, $DeliveryPostCode);
+    $stmt->execute();
+    $stmt->close();
 
     //find OrderId for saving OrderDetails
     $qry="SELECT LAST_INSERT_ID();";
@@ -61,23 +64,25 @@ function saveOrderDetails($db_conn,$orderId){
         $SauceType = $db_conn->real_escape_string($_REQUEST['SauceType'][$i]);
         $CheeseType = $db_conn->real_escape_string($_REQUEST['CheeseType'][$i]);
         $Toppings = $db_conn->real_escape_string($_REQUEST['Toppings'][$i]);
-        $PizzaType = $db_conn->real_escape_string($_REQUEST['PizzaType'][$i]);
 
+         $qry="INSERT INTO order_details SET OrderId= ? , PizzaType= ? , SizeType= ?, DoughType= ?,
+          SauceType= ? , CheeseType= ?, Toppings= ?;"; 
 
-        $qry="INSERT INTO order_details SET OrderId=" .$orderId ." , PizzaType='" .$PizzaType
-         ."', SizeType='" .$Size ."', DoughType='" .$DoughType 
-         ."', SauceType='" .$SauceType ."', CheeseType='" .$CheeseType 
-         ."', Toppings='" .$Toppings ."';"; 
-    
-         $rs = $db_conn->query($qry);
+        $stmt = $db_conn->prepare($qry);
+        $stmt->bind_param("sssssss", $orderId, $PizzaType, $Size, $DoughType, $SauceType, $CheeseType, $Toppings);
+        $stmt->execute();
+        
+       
+        $rs = $db_conn->query($qry);
    
     }
-    if($rs==true){
+    if($stmt==true){
         return  '{ "status": "succeed", "orderId":"' .$orderId  .'" }';
     }
     else{
         return '{ "status": "failed" }';
     }
+    $stmt->close();
     
 }
 

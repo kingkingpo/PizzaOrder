@@ -3,7 +3,6 @@
 /*
  * File name:     functions.php
  * Description:   Keeps functions in one file to maintain the codes easily
- *
  */
 
 
@@ -44,8 +43,10 @@ function getUserInfo() {
         // Sanitize user inputs
         $email = $db_conn->real_escape_string($_POST['email']);
 
-        $userId = "SELECT CustId FROM customers WHERE Email ='".$email."'";
-        $resultId = $db_conn->query($userId);
+        $stmt = $db_conn->prepare("SELECT CustId FROM customers WHERE Email = ? ");
+        $stmt->bind_param('s',$email);
+        $stmt->execute();
+        $resultId = $stmt->get_result();
 
         if ($resultId->num_rows > 0){
 
@@ -59,27 +60,29 @@ function getUserInfo() {
                 FROM customers c
                 INNER JOIN orders o
                 ON c.CustId = o.CustId
-                WHERE email='" .$email."'";
-  
-            $result = $db_conn->query($sql);
+                WHERE email= ? ";
+        $stmt2 = $db_conn->prepare($sql);
+        $stmt2->bind_param('s',$email);
+        $stmt2->execute();
+        $result = $stmt2->get_result();
+     
+        if ($result->num_rows > 0){
 
-            if ($result->num_rows > 0){
+            $customers = array("status" => "OK");
+            $customers['customers'] = array();
 
-                $customers = array("status" => "OK");
-                $customers['customers'] = array();
+            while ($row = $result->fetch_assoc()){
 
-                while ($row = $result->fetch_assoc()){
+                array_push($customers['customers'], $row);
 
-                    array_push($customers['customers'], $row);
+            } //End While-loop
 
-                } //End While-loop
-
-                echo json_encode($customers);
-            
-            } else {
-                // if no result, send out an error message
-                echo '{ "status": "No email found" }';
-            }
+            echo json_encode($customers);
+        
+        } else {
+            // if no result, send out an error message
+            echo '{ "status": "No email found" }';
+        }
 
         // disconnect DB
         disconnect_db($db_conn);
@@ -135,10 +138,12 @@ function saveUserInfo() {
             } else if ($affectedRows == 1) {
                 // if INSERT is done successfully,
                 //get the CustId
-                $sql2 = "SELECT * FROM customers WHERE Email = '".$email. "'";
-                $getCustAdd = $db_conn->query($sql2);
-                
-                if ($getCustAdd->num_rows > 0){
+
+                $stmt2 = $db_conn->prepare("SELECT * FROM customers WHERE Email = ? ");
+                $stmt2->bind_param('s',$email);
+                $stmt2->execute();
+                $getCustAdd = $stmt2->get_result();
+                if($getCustAdd->num_rows > 0){
                     // if there is any results returned from SQL query,
                     // create & populate customers array    
                     $customers = array("status" => "NewOK");
@@ -156,6 +161,8 @@ function saveUserInfo() {
                     echo '{ "status": "Something went wrong." }';
                 }
 
+                $stmt2->close();
+                
             }
         
         // disconnect DB
@@ -174,13 +181,22 @@ function saveUserInfo() {
 function getAddresses(){
     
     if(isset($_REQUEST['CustId'])){
+        $db_conn = connect_db();
+
+        $CustId = $db_conn->real_escape_string($_REQUEST['CustId']);
         // Get exising delivery addresses
         $sql = "SELECT DISTINCT CustId, DeliveryStreetAddress, DeliveryUnitNum, DeliveryCity, DeliveryProvince, DeliveryPostCode
                 FROM orders 
-                WHERE CustId='" .$_REQUEST['CustId']."'";
+                WHERE CustId= ? ";
        
-       $db_conn = connect_db();
-        $result = $db_conn->query($sql);
+        
+
+        $stmt = $db_conn->prepare($sql);
+        $stmt->bind_param('s',$CustId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+       
+        //$result = $db_conn->query($sql);
 
         if ($result->num_rows > 0){
 
